@@ -1,0 +1,24 @@
+# Savepoint Protocol
+
+> Version control for thought. A protocol for marking where reasoning forks before context windows close.
+
+## About
+
+Reasoning in progress is the most perishable thing in a knowledge workflow. Context windows close. The thinking-path disappears. Savepoint marks the exact moment a thinking-path forks — before the context closes.
+
+Three documents: conventions.md (boundary list AI cannot alter), symbol-index.md (state ledger), and standardized context prompts. Governance the AI cannot rewrite. Open source, v3.0.
+
+Works on paper, in plaintext, or in a CLI. The tool is incidental; the principle of marking inflection points survives any format.
+
+## Author
+
+Peter Salvato — Systems architect.
+Website: https://petersalvato.com
+Full case study: https://petersalvato.com/protocols/savepoint-protocol/
+Source code: https://github.com/PeterSalvato/Savepoint.Protocol
+
+## Contact
+
+Email: peter@petersalvato.com
+GitHub: https://github.com/petersalvato
+LinkedIn: https://linkedin.com/in/petersalvato
