@@ -39,7 +39,7 @@ def extract(args):
                 continue
             parts = message.get("content", {}).get("parts", [])
             for part in parts:
-                if "<Savepoint" in part:
+                if re.search(r"<Savepoint\s+[^>]*protocol_version:", part):
                     # Check timestamp filtering
                     timestamp_match = re.search(r"timestamp:(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})", part)
                     if timestamp_match:
