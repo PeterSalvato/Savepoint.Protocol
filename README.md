@@ -46,6 +46,12 @@ It's not a note. Not a summary. Not metadata. It's a semantic trail marker — a
 
 ## Tools
 
+### Use with any chatbot (ChatGPT, Claude, Gemini)
+
+Paste a one-paragraph instruction into your AI assistant's custom instructions. The assistant will emit Savepoints during your conversations — marking cognitive turning points you can find later in exports.
+
+[**Chatbot instructions for all platforms →**](./docs/chatbot-instructions.md)
+
 ### Claude Code Skill
 
 Drop, search, list, and read Savepoints directly from your editor:
@@ -80,6 +86,7 @@ Start with the specification. Read the philosophy if you want to understand why.
 | Document | What it covers |
 |----------|---------------|
 | [Specification](./docs/savepoint.syntax.md) | Canonical v3.0 syntax — fields, rules, examples |
+| [Chatbot Instructions](./docs/chatbot-instructions.md) | Paste-in instructions for ChatGPT, Claude, Gemini |
 | [Philosophy](./docs/philosophy.md) | The jungle cartography metaphor — why Savepoints exist |
 | [Usage Guide](./docs/usage.md) | How to use Savepoints solo, in teams, and with AI |
 | [Governance](./docs/governance.md) | How the protocol evolves, drift arbitration, forking rules |
