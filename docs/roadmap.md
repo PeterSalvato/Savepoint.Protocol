@@ -10,7 +10,7 @@ This document outlines the planned growth of the Savepoint Protocol system—tec
 - [x] Core subcommand: `extract`
 - [x] Live flag-based + prompt-fallback interface
 - [x] Semantically structured output (`.md`, `.csv`, `.json`, `.meta.txt`)
-- [x] Proper authorship attribution and MIT licensing
+- [x] Proper authorship attribution and custom licensing
 - [x] `install.sh` + `--uninstall` flow
 - [x] GitHub repo structured for modularity
 - [x] All source code protected and versioned

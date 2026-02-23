@@ -6,8 +6,9 @@ for structuring, archiving, and reflecting on personal and team-based intellectu
 The Savepoint Protocol CLI, directory structures, naming conventions, and semantic system
 are all part of this authored framework.
 
-The name “Savepoint Protocol” and its associated concepts, file formats, and recursive
+The name "Savepoint Protocol" and its associated concepts, file formats, and recursive
 reflection philosophy are not currently trademarked, but are intended to be attributed
 and credited to Peter Salvato in derivative or public-facing works.
 
-This project is open-source under the MIT license.
+This project is licensed under a custom non-commercial humanist license.
+See LICENSE.md for full terms.

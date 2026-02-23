@@ -61,11 +61,9 @@ Agents can emit Savepoints, interpret them, and use them for orientation or flag
 ## Modularity
 
 The protocol includes:
-- `Savepoint-syntax.md` → Canonical format
-- `instructions.chatgpt.md` → Runtime AI enforcement
-- `scripts/` → Shell automation
-- `printables/` → Physical UX
-- `setup-guides/` → Context-specific onboarding
+- `savepoint.syntax.md` → Canonical format
+- `tools/` → Shell and Python CLI automation
+- `skills/` → Claude Code skill for AI-assisted usage
 - `.savepoints/` → Log or semantic timeline
 
 Savepoint.Protocol is intentionally **small**, so it can be extended through:

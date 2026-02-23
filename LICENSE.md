@@ -53,7 +53,7 @@ Derivative works (forks, adaptations, academic extensions) are allowed **only fo
 All forks must include:
 
 - Clear attribution to **Peter Salvato**
-- A link to the canonical repository: [github.com/peterSalvato/Savepoint-protocol](https://github.com/peterSalvato/Savepoint-protocol)
+- A link to the canonical repository: [github.com/PeterSalvato/Savepoint.Protocol](https://github.com/PeterSalvato/Savepoint.Protocol)
 
 ---
 

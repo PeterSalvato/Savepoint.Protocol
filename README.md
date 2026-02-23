@@ -86,7 +86,7 @@ Savepoints are declared using a self-closing tag:
 - `confidence`: self-assessed certainty  
 - `influence`: source, reference, or attribution
 
-[Full specification →](https://github.com/peterSalvato/savepoint-protocol/blob/main/spec/savepoint-spec-v1.md)
+[Full specification →](./docs/savepoint.syntax.md)
 
 ---
 
@@ -157,7 +157,7 @@ It builds cognitive version control—not just note capture.
 
 When the forest regrows, the Savepoints remain.
 
-[Read the full philosophy →](https://github.com/peterSalvato/savepoint-protocol/blob/main/docs/philosophy.md)
+[Read the full philosophy →](./docs/philosophy.md)
 
 ---
 
@@ -166,7 +166,7 @@ When the forest regrows, the Savepoints remain.
 Savepoint.Protocol is licensed under a custom humanist license.  
 Use freely. Fork deeply. But preserve authorship and intent.
 
-License: [license.md](https://github.com/peterSalvato/savepoint-protocol/blob/main/license.md)
+License: [LICENSE.md](./LICENSE.md)
 
 ---
 
