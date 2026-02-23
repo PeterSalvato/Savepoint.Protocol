@@ -92,10 +92,10 @@ All terms are protected under copyright and project-level trademark.
 ## Repository Structure (Summary)
 
 ```
-/docs/             → Human-readable specification
-/environments/     → Platform-specific usage
-/scripts/          → Shell + CLI interfaces
-/printables/       → 2D and 3D analog assets
+/docs/             → Specification, philosophy, usage, governance
+/tools/            → Shell and Python CLI tools
+/scripts/          → Core utility scripts
+/skills/           → Claude Code skill definition
 /.savepoints/      → Timestamped authored entries (local or system-generated)
 ```
 
@@ -105,9 +105,9 @@ Each directory and filename is intentional. Do not rename, rebrand, or remix wit
 
 ## Version History Tracking
 
-- Protocol syntax versions are defined in `Savepoint-syntax.md`
+- Protocol syntax versions are defined in `savepoint.syntax.md`
 - Conceptual maturity (v3.x) is tracked independently of repository release (v1.0)
-- All version drift is logged in `version-history.md`
+- All version drift is logged in `version.log.md`
 
 ---
 

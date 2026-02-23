@@ -1,20 +1,39 @@
 # CLI Tools – Savepoint.Protocol
 
-These shell tools help process OpenAI chat exports, extract key content, and structure them into Savepoint-ready formats. Each is self-contained and human-readable.
+Tools for processing conversation exports and working with Savepoints from the command line.
 
 ---
 
-## Tool Index
+## Shell Tools (`tools/bin/`)
 
-### `sp-split-json-chunks.sh`
-Splits large `conversations.json` files into smaller 25-item chunks.
+### `sp_extract.sh`
+Extracts Savepoints from exported ChatGPT conversation JSON files. Parses conversations, identifies Savepoint-formatted content, and outputs structured `.md` files.
 
-### `sp-keeper-extract.sh`
-Extracts all `keeper_message` objects (if present) from the chunked JSON.
+```bash
+tools/bin/sp_extract.sh conversations.json
+```
+
+### `sp_drop.sh`
+Manual Savepoint creation from the command line. *(Not yet implemented — use the Claude Code skill for `/savepoint drop` instead.)*
+
+### `sp_install.sh`
+Installs the `sp` command to your system PATH.
+
+```bash
+bash tools/install.sh
+```
+
+## Core Scripts (`scripts/core/`)
 
 ### `sp-export-to-md.sh`
 Converts matching titled chats into `.md` files with YAML frontmatter.
 
+### `sp-keeper-extract.sh`
+Extracts all `keeper_message` objects from chunked JSON.
+
+### `sp-split-json-chunks.sh`
+Splits large `conversations.json` files into smaller 25-item chunks.
+
 ---
 
-Each script contains embedded `USAGE:` instructions and can be run without flags or arguments.
+Each script contains embedded usage instructions and can be run without flags or arguments.
