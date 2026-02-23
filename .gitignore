@@ -1,3 +1,5 @@
-extracttest/conversations.json
-extracttest/conversations.json
-extracttest/conversations.json
+__pycache__/
+*.egg-info/
+*.Zone.Identifier
+.workingFiles/
+extracttest/

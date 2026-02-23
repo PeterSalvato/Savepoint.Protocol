@@ -100,31 +100,43 @@ Savepoints are declared using a self-closing tag:
 
 ---
 
-## CLI Tool
+## Tools
 
-A Python CLI tool is included to extract Savepoints from exported ChatGPT logs:
+### CLI (Shell)
+
+Shell-based tools for working with Savepoints:
 
 ```bash
-git clone https://github.com/peterSalvato/savepoint-protocol.git
-cd savepoint-protocol
-python cli/savepoint_split.py conversations.json
+# Extract savepoints from ChatGPT conversation exports
+tools/bin/sp_extract.sh conversations.json
+
+# Install the sp command
+bash tools/install.sh
 ```
 
-- Parses logs into Savepoint `.md` entries
-- Timestamps and Git-prepares each session
-- Requires Python 3.7+
+### Claude Code Skill
 
-Tool: [cli/savepoint_split.py](https://github.com/peterSalvato/savepoint-protocol/blob/main/cli/savepoint_split.py)
+A Claude Code skill for dropping, searching, listing, and reading Savepoints directly from your editor:
+
+```bash
+# Install the skill
+mkdir -p ~/.claude/skills/savepoint
+cp skills/claude-code/SKILL.md ~/.claude/skills/savepoint/SKILL.md
+```
+
+Then use `/savepoint drop`, `/savepoint search`, `/savepoint list`, `/savepoint read` in any Claude Code session.
 
 ---
 
 ## Repository Structure
 
-/spec/ – Canonical protocol format and rules  
-/cli/ – CLI tool (ChatGPT log parser)  
-/examples/ – Sample Savepoint sessions  
-/.savepoints/ – Real Savepoint logs  
-/docs/ – Extended philosophy and integration
+```
+/docs/         – Specification, philosophy, examples, governance
+/tools/        – CLI tools (shell + Python)
+/scripts/      – Core utility scripts
+/skills/       – Claude Code skill definition
+/.savepoints/  – Real Savepoint logs from this project
+```
 
 ---
 
