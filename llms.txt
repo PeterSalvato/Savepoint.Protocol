@@ -14,7 +14,7 @@ Works on paper, in plaintext, or in a CLI. The tool is incidental; the principle
 
 Peter Salvato — Systems architect.
 Website: https://petersalvato.com
-Full case study: https://petersalvato.com/protocols/savepoint-protocol/
+Full case study: https://petersalvato.com/governance/savepoint-protocol/
 Source code: https://github.com/PeterSalvato/Savepoint.Protocol
 
 ## Contact

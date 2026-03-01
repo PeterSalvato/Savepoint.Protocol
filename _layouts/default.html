@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  <div class="site-wrapper">
+    <nav class="site-nav">
+      <a href="{{ '/' | relative_url }}" class="nav-home">Savepoint Protocol</a>
+      <ul class="nav-docs">
+        {% assign ordered_docs = site.docs | sort: "order" %}
+        {% for doc in ordered_docs %}
+        <li{% if page.url == doc.url %} class="active"{% endif %}>
+          <a href="{{ doc.url | relative_url }}">{{ doc.nav_title | default: doc.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="https://github.com/PeterSalvato/Savepoint.Protocol" class="nav-github">GitHub</a>
+    </nav>
+    <main class="site-content">
+      {{ content }}
+    </main>
+    {% include footer.html %}
+  </div>
+</body>
+</html>

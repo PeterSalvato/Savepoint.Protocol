@@ -1,0 +1,39 @@
+title: "Savepoint Protocol"
+description: "A protocol for marking where reasoning forks before context windows close. Semantic version control for thought. Open source, v3.0."
+url: "https://savepoint.systems"
+baseurl: ""
+author: "Peter Salvato"
+
+collections:
+  docs:
+    output: true
+    permalink: /docs/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: "doc"
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE.md
+  - CITATION.cff
+  - NOTICE
+  - ip_declaration.md
+  - changelog.md
+  - VERSION
+  - bootstrap.sh
+  - docs/
+  - tools/
+  - scripts/
+  - skills/
+  - .savepoints/
+  - node_modules/
+  - vendor/

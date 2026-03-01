@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<article class="doc-page">
+  <header class="doc-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="doc-subtitle">{{ page.subtitle }}</p>{% endif %}
+  </header>
+  <div class="doc-content">
+    {{ content }}
+  </div>
+  <nav class="doc-nav-footer">
+    {% assign ordered_docs = site.docs | sort: "order" %}
+    {% for doc in ordered_docs %}
+      {% if doc.url == page.url %}
+        {% if forloop.index > 1 %}
+          {% assign prev_index = forloop.index0 | minus: 1 %}
+          <a href="{{ ordered_docs[prev_index].url | relative_url }}" class="doc-prev">&larr; {{ ordered_docs[prev_index].nav_title | default: ordered_docs[prev_index].title }}</a>
+        {% endif %}
+        {% assign next_index = forloop.index0 | plus: 1 %}
+        {% if next_index < ordered_docs.size %}
+          <a href="{{ ordered_docs[next_index].url | relative_url }}" class="doc-next">{{ ordered_docs[next_index].nav_title | default: ordered_docs[next_index].title }} &rarr;</a>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </nav>
+</article>

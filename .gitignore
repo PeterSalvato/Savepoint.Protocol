@@ -3,3 +3,9 @@ __pycache__/
 *.Zone.Identifier
 .workingFiles/
 extracttest/
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+Gemfile.lock

@@ -1,0 +1,68 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if page.title and page.title != site.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }} — Version Control for Thought{% endif %}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<meta name="author" content="{{ site.author }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:title" content="{{ page.title | default: site.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:site_name" content="{{ site.title }}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page.title | default: site.title }}">
+<meta name="twitter:description" content="{{ page.description | default: site.description }}">
+
+<!-- JSON-LD -->
+{% if page.layout == "doc" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "name": "{{ page.title }}",
+  "url": "{{ page.url | absolute_url }}",
+  "description": "{{ page.description | default: site.description }}",
+  "isPartOf": {
+    "@type": "SoftwareApplication",
+    "name": "Savepoint Protocol",
+    "url": "https://savepoint.systems"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Peter Salvato",
+    "url": "https://petersalvato.com"
+  }
+}
+</script>
+{% else %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Savepoint Protocol",
+  "url": "https://savepoint.systems",
+  "description": "{{ site.description }}",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Cross-platform",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": {
+    "@type": "Person",
+    "name": "Peter Salvato",
+    "url": "https://petersalvato.com",
+    "jobTitle": "Systems Architect"
+  }
+}
+</script>
+{% endif %}
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&family=Space+Mono&display=swap">
+
+<!-- Styles -->
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
