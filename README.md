@@ -144,26 +144,13 @@ Use freely. Fork deeply. But preserve authorship and intent.
 
 ## Author
 
-**[Peter Salvato](https://petersalvato.com)** — Systems architect. Design, engineering, strategy.
-
-**Full case study:** [petersalvato.com/protocols/savepoint-protocol/](https://petersalvato.com/protocols/savepoint-protocol/)
+**[Peter Salvato](https://petersalvato.com)** — Design engineer.
 
 - Email: peter@petersalvato.com
 - LinkedIn: [linkedin.com/in/petersalvato](https://linkedin.com/in/petersalvato)
 
-## Semantic Context & Provenance
+## Context
 
-This repository is a physical instance of the **Savepoint Protocol**, a governing logic within the [Peter Salvato](https://petersalvato.com) systems architecture. It is classified under **[Altitude 01: Governance](https://petersalvato.com/governance/)** and is designed to mitigate [semantic drift](https://petersalvato.com/vocabulary/#drift) in high-density cognitive workflows.
+This is one of three governance protocols published at [petersalvato.com](https://petersalvato.com). The [Formwork Protocol](https://petersalvato.com/governance/formwork-protocol/) describes the methodology. The [System Vocabulary](https://petersalvato.com/vocabulary/) defines terms like [drift](https://petersalvato.com/vocabulary/#drift), [savepoint](https://petersalvato.com/vocabulary/#savepoint), [scaffold](https://petersalvato.com/vocabulary/#scaffold), and [fidelity](https://petersalvato.com/vocabulary/#fidelity).
 
-### Canonical Definitions
-The following terms used in this repository are governed by the [System Vocabulary](https://petersalvato.com/vocabulary/):
-
-*   **[Savepoint](https://petersalvato.com/vocabulary/#savepoint)**: A semantic trail marker; a self-authored record of a cognitive turning point.
-*   **[Drift](https://petersalvato.com/vocabulary/#drift)**: The gradual loss of original intent as work moves through execution.
-*   **[Scaffold](https://petersalvato.com/vocabulary/#scaffold)**: The structure that prevents drift; what holds original clarity in place.
-*   **[Fidelity](https://petersalvato.com/vocabulary/#fidelity)**: How well a system holds its founding intent over time.
-
-For the complete methodology and build story, see the [Savepoint Protocol Documentation](https://petersalvato.com/governance/savepoint-protocol/).
-
----
-*Generated as a build artifact of the [Formwork Protocol](https://petersalvato.com/governance/formwork-protocol/).*
+Full case study: [petersalvato.com/governance/savepoint-protocol/](https://petersalvato.com/governance/savepoint-protocol/)
