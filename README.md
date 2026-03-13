@@ -7,7 +7,7 @@
 # Savepoint.Protocol
 
 > Canonical Public Release: v1.0 (2025-04-08)
-> Protocol Syntax Version: 3.0
+> Protocol Syntax Version: 3.2
 > Author: Peter Salvato
 > © 2025 Peter Salvato. All rights reserved.
 > All terminology, structure, and logic protected under custom license.
@@ -24,10 +24,11 @@ It's not a note. Not a summary. Not metadata. It's a semantic trail marker — a
 
 ```plaintext
 <Savepoint
-  protocol_version:3.0
+  protocol_version:3.2
   category:system_logic
   function:declaration
   timestamp:2025-04-08T15:43:00Z
+  context:When state changes frequently and snapshots go stale, the structure itself should recurse rather than being captured at a point in time.
   # Recursive structures should replace version snapshots wherever drift is likely.
 />
 ```
@@ -36,7 +37,7 @@ It's not a note. Not a summary. Not metadata. It's a semantic trail marker — a
 
 ## Quick Start
 
-**1. Learn the shape.** A Savepoint is a self-closing tag with `key:value` attributes and a single `#` content line. That's it. [Full syntax →](./docs/savepoint.syntax.md)
+**1. Learn the shape.** A Savepoint is a self-closing tag with `key:value` attributes and a single `#` content line. The optional `context:` field captures enough substance to reconstruct meaning without the surrounding conversation. [Full syntax →](./docs/savepoint.syntax.md)
 
 **2. Drop one.** When a decision clicks, when meaning shifts, when you realize the shape of your thinking just changed — write a Savepoint. In any environment: plaintext, shell, chat, paper.
 
@@ -85,7 +86,7 @@ Start with the specification. Read the philosophy if you want to understand why.
 
 | Document | What it covers |
 |----------|---------------|
-| [Specification](./docs/savepoint.syntax.md) | Canonical v3.0 syntax — fields, rules, examples |
+| [Specification](./docs/savepoint.syntax.md) | Canonical v3.2 syntax — fields, rules, examples |
 | [Chatbot Instructions](./docs/chatbot-instructions.md) | Paste-in instructions for ChatGPT, Claude, Gemini |
 | [Philosophy](./docs/philosophy.md) | The jungle cartography metaphor — why Savepoints exist |
 | [Usage Guide](./docs/usage.md) | How to use Savepoints solo, in teams, and with AI |
