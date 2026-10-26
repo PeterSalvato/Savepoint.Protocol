@@ -145,13 +145,11 @@ Use freely. Fork deeply. But preserve authorship and intent.
 
 ## Author
 
-**[Peter Salvato](https://petersalvato.com)** — Design engineer.
+**[Peter Salvato](https://petersalvato.com)**
 
 - Email: peter@petersalvato.com
 - LinkedIn: [linkedin.com/in/petersalvato](https://linkedin.com/in/petersalvato)
 
 ## Context
 
-This is one of three governance protocols published at [petersalvato.com](https://petersalvato.com). The [Formwork Protocol](https://petersalvato.com/governance/formwork-protocol/) describes the methodology. The [System Vocabulary](https://petersalvato.com/vocabulary/) defines terms like [drift](https://petersalvato.com/vocabulary/#drift), [savepoint](https://petersalvato.com/vocabulary/#savepoint), [scaffold](https://petersalvato.com/vocabulary/#scaffold), and [fidelity](https://petersalvato.com/vocabulary/#fidelity).
-
-Full case study: [petersalvato.com/governance/savepoint-protocol/](https://petersalvato.com/governance/savepoint-protocol/)
+This is one of three governance protocols published at [petersalvato.com](https://petersalvato.com). The Formwork Protocol describes the methodology. The System Vocabulary defines terms like drift, savepoint, scaffold, and fidelity.
