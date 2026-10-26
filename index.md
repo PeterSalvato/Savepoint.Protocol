@@ -20,7 +20,6 @@ description: "A protocol for marking where reasoning forks before context window
 <div class="home-links">
   <a href="{{ '/docs/philosophy/' | relative_url }}">Read the docs &rarr;</a>
   <a href="https://github.com/PeterSalvato/Savepoint.Protocol">View on GitHub &rarr;</a>
-  <a href="https://petersalvato.com/governance/savepoint-protocol/">Full case study at petersalvato.com &rarr;</a>
 </div>
 
 </div>

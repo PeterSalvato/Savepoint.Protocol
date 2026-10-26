@@ -7,7 +7,7 @@ version: "1.0"
 date-released: "2025-04-08"
 license: "LicenseRef-Custom"
 repository-code: "https://github.com/PeterSalvato/Savepoint.Protocol"
-url: "https://petersalvato.com/protocols/savepoint-protocol/"
+url: "https://savepointprotocol.org"
 authors:
   - family-names: "Salvato"
     given-names: "Peter"
