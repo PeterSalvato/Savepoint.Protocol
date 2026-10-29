@@ -41,14 +41,14 @@ All Savepoints must comply with this syntax unless explicitly overridden by a la
 
 | Field             | Required | Description                                                  |
 |------------------|----------|--------------------------------------------------------------|
-| `protocol_version` | ✅       | The version of the syntax used (always declared)             |
-| `category`         | ✅       | Domain of reflection (`system_logic`, `design_note`, etc.)   |
-| `function`         | ✅       | Purpose of the Savepoint (`declaration`, `drift_detected`, `revision`) |
-| `timestamp`        | ✅       | ISO 8601 UTC timestamp (e.g., `2025-04-08T15:32:00Z`)         |
-| `importance`       | ⬜ Optional | Priority or urgency (`high`, `medium`, `low`)              |
-| `confidence`       | ⬜ Optional | Self-assessed confidence in this Savepoint's accuracy       |
-| `influence`        | ⬜ Optional | Attribution to people, sources, or other Savepoints         |
-| `#` line           | ✅       | The actual semantic content, prefixed by a `#` character     |
+| `protocol_version` | Required | The version of the syntax used (always declared)             |
+| `category`         | Required | Domain of reflection (`system_logic`, `design_note`, etc.)   |
+| `function`         | Required | Purpose of the Savepoint (`declaration`, `drift_detected`, `revision`) |
+| `timestamp`        | Required | ISO 8601 UTC timestamp (e.g., `2025-04-08T15:32:00Z`)         |
+| `importance`       | Optional | Priority or urgency (`high`, `medium`, `low`)              |
+| `confidence`       | Optional | Self-assessed confidence in this Savepoint's accuracy       |
+| `influence`        | Optional | Attribution to people, sources, or other Savepoints         |
+| `#` line           | Required | The actual semantic content, prefixed by a `#` character     |
 
 ---
 
