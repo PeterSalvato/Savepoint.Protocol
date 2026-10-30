@@ -1,5 +1,5 @@
 title: "Savepoint Protocol"
-description: "A protocol for marking where reasoning forks before context windows close. Semantic version control for thought. Open source, v3.0."
+description: "A protocol for marking where reasoning forks, before the context closes. Version control for thought. Open source, v3.2."
 url: "https://savepointprotocol.org"
 baseurl: ""
 author: "Peter Salvato"

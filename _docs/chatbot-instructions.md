@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: "Savepoint Protocol: Chatbot Instructions"
+title: "Chatbot Instructions"
 nav_title: "Chatbot Instructions"
 description: "Installation manual for embedding Savepoint Protocol into AI assistants. Platform-specific instructions."
 order: 6

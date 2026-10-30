@@ -1,20 +1,18 @@
 ---
 layout: doc
-title: "Philosophy – Savepoint.Protocol"
+title: "Philosophy"
 nav_title: "Philosophy"
-description: "Cognitive cartography in nonlinear terrain. The philosophical foundation of Savepoint Protocol."
+description: "Why Savepoint exists: marking the moments thinking turns, so you can find your way back to them."
 order: 1
 ---
 
 ## What Is Savepoint.Protocol?
 
-Savepoint.Protocol is not a tool. It is a cognitive infrastructure specification.
+Savepoint.Protocol is a specification for cognitive infrastructure.
 
-It provides a structured way to **mark**, **return to**, and **reason through** meaningful inflection points—within a session, across a project, or over the course of a life of thought.
+It gives you a structured way to **mark**, **return to**, and **reason through** the moments where thinking turns, whether within a session, across a project, or over years of work.
 
-Savepoints are not notes.
-They are **semantic flares**, **declarative glyphs**, **timestamped assertions of meaning**.
-They exist to be returned to.
+A Savepoint is a **semantic flare**: a timestamped statement that something meaningful happened here. It exists to be returned to.
 
 ---
 
@@ -22,42 +20,36 @@ They exist to be returned to.
 
 The guiding metaphor of Savepoint.Protocol is **cognitive cartography in nonlinear terrain**.
 
-When you're deep in thought—solo or with others—you are moving through dense, unmapped jungle.
-You don't yet know the shape of the path. You don't know what will matter until after it happens.
+Deep thinking, alone or with others, is like moving through dense, unmapped jungle. You don't yet know the shape of the path, and you won't know what mattered until after it happens.
 
-As you move forward, you drop Savepoints.
-Each Savepoint is a flare. A carved symbol. A semantic beacon.
-It says: *"Something happened here. Return."*
+As you move forward, you drop Savepoints. Each one is a flare, a carved symbol on a tree. It says: *"Something happened here. Return."*
 
-You are not building a map as you go.
-You are **marking the path** for later traversal—by yourself, by your team, by a recursive system, or by a machine trained to understand the terrain.
+You aren't mapping as you go. You are **marking the path** so that you, your team, or a machine can traverse it later.
 
-Later—when the moment has passed and perspective is available—you or others can re-enter the jungle.
-You follow the flares. You investigate the flags. You **make meaning from what was marked**.
+Later, once the moment has passed and you have perspective, you re-enter the jungle. You follow the flares and **make meaning from what was marked**.
 
 This is the split between the **recon pass** and the **collection pass**:
-- The first time through: you drop Savepoints to preserve significance in real time.
-- The second time through: you interpret those signals to find your way.
 
-The Savepoint does not summarize. It **signals**.
-It does not organize. It **anchors**.
+- The first time through, you drop Savepoints to preserve significance in real time.
+- The second time through, you read those signals to find your way.
+
+A Savepoint **signals** and **anchors**. Summarizing and organizing come later, if at all.
 
 ---
 
 ## Why This Matters
 
-Most systems treat thought as data to store, polish, or sort.
-Savepoint.Protocol treats thought as **terrain** to traverse and **meaning** to rediscover.
+Most systems treat thought as data to store, polish, or sort. Savepoint.Protocol treats thought as **terrain** to traverse and **meaning** to rediscover.
 
 It is:
-- Sovereign: You are the author of each beacon.
-- Recursive: Each pass deepens—not repeats—the prior.
-- Uncompressed: Savepoints are not abstractions. They are anchors.
-- Append-only: Nothing is overwritten. Drift is tracked, not erased.
-- Cross-contextual: Works in digital, analog, AI, shell, notebook, conversation, archive.
 
-This system is not designed for convenience.
-It is designed for **orientation** in nonlinear space.
+- **Sovereign:** you author every beacon.
+- **Recursive:** each pass goes deeper than the last.
+- **Uncompressed:** a Savepoint anchors the moment as it was.
+- **Append-only:** nothing is overwritten. Drift is tracked, never erased.
+- **Cross-contextual:** it works in digital and analog, with AI, in a shell, in a notebook, in conversation, and in an archive.
+
+It is built for **orientation** in nonlinear space, and it trades some convenience to get there.
 
 ---
 
@@ -67,54 +59,36 @@ It is designed for **orientation** in nonlinear space.
 - A **timestamped cognitive landmark**
 - A signal flare in dense or uncertain terrain
 - A reentry point for recursion, review, or realignment
-- A commitment to authorship—not just content
+- A commitment to authorship
 
 ---
 
-## What a Savepoint Is Not
+## How It Differs From a Note
 
-- A note
-- A thought fragment
-- A memory object
-- A task or tag
-- A journaling unit
-
-Savepoints do not perform.
-They preserve.
-They do not help you remember.
-They help you **return**.
+Notes, fragments, tasks, tags, and journal entries help you remember. A Savepoint helps you **return**: it preserves the exact point where something changed, so you can stand there again.
 
 ---
 
 ## Human and System Alignment
 
-Savepoint.Protocol is designed to work across:
+Savepoint.Protocol works across:
 
-- Human reflection
-- Group cognition
-- AI-assisted recursion
-- Flat files
-- Logs
-- Paper
-- Screens
-- Speech
+- Human reflection and group thinking
+- AI-assisted work
+- Flat files and logs
+- Paper, screens, and speech
 
-It creates **a structure that outlives the context in which it was written**.
-
-Whether read by a future self or a parsing tool, a Savepoint maintains **semantic fidelity across time**.
+It creates **a structure that outlives the context it was written in**. Whether a future self or a parsing tool reads it, a Savepoint keeps its meaning over time.
 
 ---
 
-## This Is Cartography, Not Note-Taking
+## Cartography Over Note-Taking
 
-There is no hierarchy. No folder. No notebook.
-There are only beacons—anchored in structure, wrapped in authorship, timestamped in motion.
+There is no hierarchy, folder, or notebook. There are only beacons, each anchored in structure, authored, and timestamped.
 
 If something matters: flare it.
 If you may need to return: mark it.
 If you realize what changed: declare it.
-
-That is Savepoint.Protocol.
 
 ---
 

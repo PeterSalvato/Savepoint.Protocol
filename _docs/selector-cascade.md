@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: "Selector Cascade — Savepoint.Protocol"
+title: "Selector Cascade"
 nav_title: "Selector Cascade"
 description: "Selector Cascade and Relevance Filter model for Savepoint document search behavior."
 order: 11

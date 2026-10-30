@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: "Usage Guide – Savepoint.Protocol"
+title: "Usage Guide"
 nav_title: "Usage"
 description: "Practical guide to using Savepoint Protocol. When to drop, solo and team use, AI integration."
 order: 3
@@ -15,7 +15,7 @@ Drop a Savepoint when:
 - Drift is occurring — you're moving away from prior intent
 - You need to flag a recursion point for yourself, your team, or an AI agent
 
-They're not about what you know. They're about what just happened.
+A Savepoint records what just happened, in the moment it happens.
 
 ---
 
@@ -55,7 +55,7 @@ You don't need a platform. You need a symbol.
 - Never compress or re-summarize
 - Only reference them. Only return to them.
 
-You're not building a system of record. You're building semantic navigation through the jungle.
+What you build is a trail through the jungle, one you can follow back.
 
 ---
 
@@ -70,7 +70,7 @@ Savepoint.Protocol supports multi-user environments:
   - Query semantic drift or insight events
   - Track decisions through collective recursion
 
-The result is a cognitive overlay layer — a distributed, recursive authorship map over complex collaboration.
+The result is a shared map of who decided what, and when, across a complex collaboration.
 
 ---
 
@@ -99,7 +99,7 @@ tools/bin/sp_extract.sh conversations.json
 
 ## Recursive Prompts
 
-Savepoints pair with recursive prompts for deeper reentry. These are not conversation starters — they're semantic instruments for navigating nonlinear reflection.
+Savepoints pair with recursive prompts for deeper reentry. Use them to work back through a moment you marked.
 
 **Savepoint Clarification:**
 > If I returned to this Savepoint a year from now, what would I wish I had clarified before leaving it?
@@ -171,8 +171,4 @@ See [prompts.md](./prompts.md) for the full set.
 
 ## Why It Works
 
-Because meaning isn't stored. It's **marked**.
-Because truth doesn't stay still. It **drifts**.
-Because no one remembers what mattered midstream — unless they left themselves a structure to return by.
-
-This protocol is that structure.
+Meaning gets lost when it is only stored, so Savepoints **mark** it. Understanding **drifts** over time, so Savepoints record where it stood. And in the middle of the work, no one can tell what will matter later. A Savepoint leaves you a way back.

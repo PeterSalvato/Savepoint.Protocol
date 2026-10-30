@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: "CLI Tools – Savepoint.Protocol"
+title: "CLI Tools"
 nav_title: "CLI Tools"
 description: "Shell and script tool reference for Savepoint Protocol. Extract, drop, and install commands."
 order: 7

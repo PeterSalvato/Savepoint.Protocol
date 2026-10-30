@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: "Protocol Manifest – Savepoint.Protocol"
+title: "Protocol Manifest"
 nav_title: "Protocol Manifest"
 description: "Formal specification and IP enforcement document for Savepoint Protocol. Protected terminology, repository structure."
 order: 5
