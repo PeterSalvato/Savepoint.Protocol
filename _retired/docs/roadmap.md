@@ -1,12 +1,13 @@
 ---
 layout: doc
-title: "Savepoint.Protocol – Project Roadmap"
+title: "Project Roadmap"
 nav_title: "Roadmap"
 description: "Multi-phase growth plan for Savepoint Protocol. CLI, visualization, web interface, distribution."
 order: 10
+function: "plan"
 ---
 
-This document outlines the planned growth of the Savepoint Protocol system—technically, semantically, and structurally. The protocol is not just a tool but an evolving method for recursive thought, authorship, and time-based understanding.
+This document outlines how the Savepoint Protocol is planned to grow: technically, semantically, and structurally. The protocol is a method for recursive thought, authorship, and understanding over time, and the tools serve it.
 
 ---
 

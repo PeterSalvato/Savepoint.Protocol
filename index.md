@@ -1,21 +1,28 @@
 ---
 layout: default
-title: "Savepoint Protocol"
-description: "A protocol for marking where reasoning forks before context windows close. Semantic version control for thought. Open source, v3.0."
+title: "SavepointProtocol"
+description: "A protocol for marking where reasoning forks, before the context closes. Version control for thought. Open source, v3.2."
 ---
 
 <div class="home-header">
-  <h1>Savepoint Protocol</h1>
-  <p class="tagline">Version Control for Thought</p>
+  <h1 class="visually-hidden">SavepointProtocol: version control for thought</h1>
+<pre class="hero-tag" aria-hidden="true"><span class="t">&lt;Savepoint</span>
+  <span class="k">protocol_version:</span>3.2
+  <span class="k">category:</span>protocol
+  <span class="k">function:</span>declaration
+  <span class="k">timestamp:</span>2025-04-08
+  <span class="k">context:</span>Mark it while it is fresh.
+  <span class="c"># Version control for thought.</span>
+<span class="t">/&gt;</span></pre>
 </div>
 
 <div class="home-content">
 
-<p>Reasoning in progress is the most perishable thing in a knowledge workflow. Not files, not decisions — the thinking-path that connects them. Context windows close. It disappears.</p>
+<p>The most perishable part of any project is the reasoning between decisions. Files survive and decisions get recorded, but the thinking that connected them is lost when the conversation ends or the context window closes.</p>
 
-<p>Savepoint is a protocol for marking the exact moment a thinking-path forks — before the context closes. One self-closing tag. Atomic, parseable, writable by hand.</p>
+<p>Savepoint marks the moment a line of thinking forks, while you still remember why. It is one self-closing tag: atomic, parseable, and writable by hand.</p>
 
-<p>Open source. v3.0. Works on paper, in plaintext, or in a CLI.</p>
+<p>Open source, version 3.2. It works on paper, in plain text, or from a command line.</p>
 
 <div class="home-links">
   <a href="{{ '/docs/philosophy/' | relative_url }}">Read the docs &rarr;</a>

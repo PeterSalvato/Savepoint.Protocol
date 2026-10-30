@@ -1,9 +1,10 @@
 ---
 layout: doc
-title: "Version Log – Savepoint.Protocol"
+title: "Version Log"
 nav_title: "Version Log"
 description: "Chronological changelog of Savepoint Protocol versions. v1.0 through v3.0 evolution."
 order: 9
+function: "changelog"
 ---
 
 ## v1.0 – Origin Format (Retired)
