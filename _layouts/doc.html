@@ -3,8 +3,14 @@ layout: default
 ---
 <article class="doc-page">
   <header class="doc-header">
-    <p class="doc-fields"><span class="k">document:</span>{{ page.order | prepend: "0" | slice: -2, 2 }} <span class="k">protocol_version:</span>3.2</p>
-    <h1>{{ page.title }}</h1>
+    <div class="doc-tag">
+      <span class="t">&lt;Savepoint</span>
+      <span class="f"><span class="k">document:</span>{{ page.order | prepend: "0" | slice: -2, 2 }}</span>
+      <span class="f"><span class="k">function:</span>{{ page.function }}</span>
+      <span class="f"><span class="k">protocol_version:</span>3.2</span>
+      <h1 class="f"><span class="c"># </span>{{ page.title }}</h1>
+      <span class="t">/&gt;</span>
+    </div>
     {% if page.subtitle %}<p class="doc-subtitle">{{ page.subtitle }}</p>{% endif %}
   </header>
   <div class="doc-content">

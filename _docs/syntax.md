@@ -4,6 +4,7 @@ title: "Savepoint Syntax"
 nav_title: "Syntax"
 description: "Canonical syntax specification for Savepoint Protocol v3.2. Self-closing tag format, field specification, and rules."
 order: 2
+function: "specification"
 ---
 
 ## Overview

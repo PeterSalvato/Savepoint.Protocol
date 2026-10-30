@@ -4,6 +4,7 @@ title: "Prompts"
 nav_title: "Prompts"
 description: "Six recursive prompt templates for navigating and deepening Savepoints. Clarification, drift, reentry, alignment."
 order: 8
+function: "reflection"
 ---
 
 ## Purpose

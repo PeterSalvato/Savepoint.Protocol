@@ -4,6 +4,7 @@ title: "Governance"
 nav_title: "Governance"
 description: "Governance rules for Savepoint Protocol evolution. Sovereign authorship, drift arbitration, protocol changes."
 order: 4
+function: "policy"
 ---
 
 ## Purpose

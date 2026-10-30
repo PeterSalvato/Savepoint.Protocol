@@ -4,6 +4,7 @@ title: "Usage Guide"
 nav_title: "Usage"
 description: "Practical guide to using Savepoint Protocol. When to drop, solo and team use, AI integration."
 order: 3
+function: "guide"
 ---
 
 ## When to Drop a Savepoint

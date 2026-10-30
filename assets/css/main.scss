@@ -180,18 +180,27 @@ a {
   padding-bottom: 1rem;
   border-bottom: 1px solid $ink;
 
-  h1 {
-    @include typed-heading;
-    font-size: 1.6rem;
-    line-height: 1.3;
-  }
-
-  .doc-fields {
+  // The header is a typed Savepoint; the # line is the page title
+  .doc-tag {
     font-family: $font-typed;
-    font-size: 0.85rem;
-    color: $ink;
-    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+
+    > * { display: block; }
+    .f { padding-left: 2ch; }
     .k { color: $ink-faint; }
+    .c { color: $ribbon; }
+
+    h1.f {
+      font-size: 1.45rem;
+      font-weight: 400;
+      line-height: 1.35;
+      margin: 0.2rem 0;
+      // the # lines up with the fields above; wrapped titles hang under the text
+      padding-left: calc(1.15rem + 1.2em); // 1.15rem = the 2ch field indent at body size
+      text-indent: -1.2em;
+      .c { color: $ribbon; }
+    }
   }
 
   .doc-subtitle {

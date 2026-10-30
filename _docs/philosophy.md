@@ -4,6 +4,7 @@ title: "Philosophy"
 nav_title: "Philosophy"
 description: "Why Savepoint exists: marking the moments thinking turns, so you can find your way back to them."
 order: 1
+function: "declaration"
 ---
 
 ## What Is Savepoint.Protocol?

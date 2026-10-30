@@ -4,6 +4,7 @@ title: "Selector Cascade"
 nav_title: "Selector Cascade"
 description: "Selector Cascade and Relevance Filter model for Savepoint document search behavior."
 order: 11
+function: "model"
 ---
 
 ```

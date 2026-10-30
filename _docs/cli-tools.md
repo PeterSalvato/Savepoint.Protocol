@@ -4,6 +4,7 @@ title: "CLI Tools"
 nav_title: "CLI Tools"
 description: "Shell and script tool reference for Savepoint Protocol. Extract, drop, and install commands."
 order: 7
+function: "reference"
 ---
 
 Tools for processing conversation exports and working with Savepoints from the command line.

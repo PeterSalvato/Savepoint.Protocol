@@ -4,6 +4,7 @@ title: "Chatbot Instructions"
 nav_title: "Chatbot Instructions"
 description: "Installation manual for embedding Savepoint Protocol into AI assistants. Platform-specific instructions."
 order: 6
+function: "instruction"
 ---
 
 Paste one of these instruction blocks into your AI assistant's custom instructions or system prompt. The assistant will then emit Savepoints during your conversations — marking cognitive turning points that you can find later when you export.
