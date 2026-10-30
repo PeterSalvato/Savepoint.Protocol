@@ -78,8 +78,6 @@ a {
   color: $ink;
   text-decoration: none;
   margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid $ink;
   display: block;
   &:hover { color: $ribbon; }
 }
@@ -147,7 +145,6 @@ a {
 .home-header {
   margin-bottom: 2.25rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid $ink;
 }
 
 .hero-tag {
@@ -178,7 +175,6 @@ a {
 .doc-header {
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid $ink;
 
   // The header is a typed Savepoint; the # line is the page title
   .doc-tag {
@@ -214,9 +210,7 @@ a {
   h1, h2 {
     @include typed-heading;
     font-size: 1rem;
-    margin: 2.25rem 0 0.75rem;
-    padding-bottom: 0.3rem;
-    border-bottom: 1px solid $rule;
+    margin: 2.75rem 0 0.75rem;
   }
   h3 {
     font-size: 1rem;
@@ -284,9 +278,7 @@ a {
   }
 
   hr {
-    border: none;
-    border-top: 1px solid $rule;
-    margin: 2rem 0;
+    display: none; // the docs use --- between every section; spacing does that job
   }
 }
 
@@ -295,7 +287,6 @@ a {
   justify-content: space-between;
   margin-top: 3rem;
   padding-top: 1.25rem;
-  border-top: 1px solid $ink;
   font-size: 0.85rem;
 
   .doc-next { margin-left: auto; }
@@ -304,7 +295,6 @@ a {
 .site-footer {
   margin-top: 3rem;
   padding-top: 1.25rem;
-  border-top: 1px solid $rule;
   font-size: 0.8rem;
   color: $ink-faint;
 
