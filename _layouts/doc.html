@@ -3,6 +3,7 @@ layout: default
 ---
 <article class="doc-page">
   <header class="doc-header">
+    <p class="doc-fields"><span class="k">document:</span>{{ page.order | prepend: "0" | slice: -2, 2 }} <span class="k">protocol_version:</span>3.2</p>
     <h1>{{ page.title }}</h1>
     {% if page.subtitle %}<p class="doc-subtitle">{{ page.subtitle }}</p>{% endif %}
   </header>
