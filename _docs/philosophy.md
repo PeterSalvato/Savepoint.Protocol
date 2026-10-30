@@ -1,96 +1,91 @@
 ---
 layout: doc
-title: "Philosophy"
-nav_title: "Philosophy"
-description: "Why Savepoint exists: marking the moments thinking turns, so you can find your way back to them."
+title: "Why Savepoint Exists"
+nav_title: "Why It Exists"
+description: "Why Savepoint exists, what a Savepoint is, and real ones from the trail left while building the protocol."
 order: 1
 function: "declaration"
 ---
 
-## What Is Savepoint.Protocol?
+Savepoint exists because I lost months of thinking. The novel, the business architecture, ideation sessions that produced real breakthroughs. The sessions ended. The context evaporated. The model started fresh every time.
 
-Savepoint.Protocol is a specification for cognitive infrastructure.
+Savepoint doesn't make the model remember. It gives me a way to carry the decisions forward myself, and to give the model enough orientation to pick up where the last session left off.
 
-It gives you a structured way to **mark**, **return to**, and **reason through** the moments where thinking turns, whether within a session, across a project, or over years of work.
+## What a Savepoint is
 
-A Savepoint is a **semantic flare**: a timestamped statement that something meaningful happened here. It exists to be returned to.
+A Savepoint marks the moment thinking changed shape. It is one self-closing tag, written while you still remember why: when it happened, what kind of moment it was, and one line saying what changed.
 
----
+This is how I defined it while building the protocol:
 
-## The Jungle Cartography Metaphor
+```
+<Savepoint
+  protocol_version:3.0
+  category:design_philosophy
+  function:declaration
+  confidence:strong
+  timestamp:2025-04-12T16:00:00Z
+  # A Savepoint is not a note. Notes capture information. Savepoints mark inflection — the moment thinking changed shape. If you can write it without stopping, it probably wasn't a Savepoint.
+/>
+```
 
-The guiding metaphor of Savepoint.Protocol is **cognitive cartography in nonlinear terrain**.
+## From the trail
 
-Deep thinking, alone or with others, is like moving through dense, unmapped jungle. You don't yet know the shape of the path, and you won't know what mattered until after it happens.
+These come from the `.savepoints/` folder in this repository: the trail I left while building the protocol itself.
 
-As you move forward, you drop Savepoints. Each one is a flare, a carved symbol on a tree. It says: *"Something happened here. Return."*
+The format settling, April 10, 2025:
 
-You aren't mapping as you go. You are **marking the path** so that you, your team, or a machine can traverse it later.
+```
+<Savepoint
+  protocol_version:3.0
+  category:protocol_evolution
+  function:revision
+  importance:high
+  confidence:strong
+  timestamp:2025-04-10T09:15:00Z
+  # The self-closing tag format is final. v1 (YAML frontmatter) was too heavy, v2 (triple-pipe) was too clever. v3 sits at the right weight — parseable by machines, writable by hand, readable by anyone.
+/>
+```
 
-Later, once the moment has passed and you have perspective, you re-enter the jungle. You follow the flares and **make meaning from what was marked**.
+Catching drift five days later:
 
-This is the split between the **recon pass** and the **collection pass**:
+```
+<Savepoint
+  protocol_version:3.0
+  category:system_logic
+  function:drift_detected
+  importance:medium
+  confidence:moderate
+  timestamp:2025-04-15T11:22:00Z
+  # Early users are writing multi-line content after the # marker. The protocol allows exactly one content line. Need to decide: enforce strictly (reject multi-line) or allow soft wrapping with a single semantic statement. Enforcing strictly preserves the constraint that forces clarity.
+/>
+```
 
-- The first time through, you drop Savepoints to preserve significance in real time.
-- The second time through, you read those signals to find your way.
+Finding the right first tool, ten months on:
 
-A Savepoint **signals** and **anchors**. Summarizing and organizing come later, if at all.
+```
+<Savepoint
+  protocol_version:3.0
+  category:tooling
+  function:declaration
+  importance:high
+  confidence:strong
+  timestamp:2026-02-23T13:00:00Z
+  # The Claude Code skill is the first fully functional Savepoint authoring tool. Drop, search, list, read — all working through natural language in the editor. The CLI shell tool was never the right first interface. An LLM that understands the protocol is.
+/>
+```
 
----
+Read in order, those lines are the project's history, and each one says why the next step happened.
 
-## Why This Matters
+## How it works in practice
 
-Most systems treat thought as data to store, polish, or sort. Savepoint.Protocol treats thought as **terrain** to traverse and **meaning** to rediscover.
+Drop a Savepoint when something shifts: a decision locks, a phrase lands, or you notice you've drifted from what you meant. Don't stop to organize them.
 
-It is:
+When you come back, follow the trail. Search by keyword or project, read the `#` lines, and pick up where the thinking turned.
 
-- **Sovereign:** you author every beacon.
-- **Recursive:** each pass goes deeper than the last.
-- **Uncompressed:** a Savepoint anchors the moment as it was.
-- **Append-only:** nothing is overwritten. Drift is tracked, never erased.
-- **Cross-contextual:** it works in digital and analog, with AI, in a shell, in a notebook, in conversation, and in an archive.
+I think of it as marking a path through dense jungle. On the first pass you can't tell what will matter, so you drop flares. On the second pass you follow them back.
 
-It is built for **orientation** in nonlinear space, and it trades some convenience to get there.
+## Next
 
----
-
-## What a Savepoint Is
-
-- A real-time **semantic declaration**
-- A **timestamped cognitive landmark**
-- A signal flare in dense or uncertain terrain
-- A reentry point for recursion, review, or realignment
-- A commitment to authorship
-
----
-
-## How It Differs From a Note
-
-Notes, fragments, tasks, tags, and journal entries help you remember. A Savepoint helps you **return**: it preserves the exact point where something changed, so you can stand there again.
-
----
-
-## Human and System Alignment
-
-Savepoint.Protocol works across:
-
-- Human reflection and group thinking
-- AI-assisted work
-- Flat files and logs
-- Paper, screens, and speech
-
-It creates **a structure that outlives the context it was written in**. Whether a future self or a parsing tool reads it, a Savepoint keeps its meaning over time.
-
----
-
-## Cartography Over Note-Taking
-
-There is no hierarchy, folder, or notebook. There are only beacons, each anchored in structure, authored, and timestamped.
-
-If something matters: flare it.
-If you may need to return: mark it.
-If you realize what changed: declare it.
-
----
-
-Philosophy document authored April 8, 2025
+- [Syntax]({{ '/docs/syntax/' | relative_url }}): the full tag and its fields
+- [Usage]({{ '/docs/usage/' | relative_url }}): dropping and finding Savepoints
+- [Chatbot Instructions]({{ '/docs/chatbot-instructions/' | relative_url }}): having an AI drop them for you

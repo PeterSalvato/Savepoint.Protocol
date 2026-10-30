@@ -234,7 +234,8 @@ a {
     background: $code-bg;
     border-left: 2px solid $rule;
     padding: 1rem 1.25rem;
-    overflow-x: auto;
+    white-space: pre-wrap; // long # lines wrap instead of scrolling sideways
+    overflow-wrap: anywhere;
     margin-bottom: 1.25rem;
 
     // Savepoints and other examples are typed, like the masthead
