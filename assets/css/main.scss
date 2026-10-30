@@ -79,10 +79,13 @@ a {
 }
 
 .nav-home {
+  // The mark: the protocol's opening tag, typed. Hidden on the home page,
+  // where the full tag is the masthead.
   @include typed-heading;
-  text-transform: none; // the name is always written SavepointProtocol
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
+  font-family: $tt-e;
+  text-transform: none;
+  font-size: 1.3rem;
+  letter-spacing: 0;
   white-space: nowrap;
   color: $ink;
   text-decoration: none;
