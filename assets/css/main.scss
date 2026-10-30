@@ -14,10 +14,18 @@ $rule: #c6cac8;
 $code-bg: #e3e6e4;
 
 $font: 'Courier Prime', 'Courier New', monospace;
-// Display face: Special Elite, a worn typewriter face (free, Apache 2.0,
-// from Google Fonts). Its uneven inking is the only distress on the site;
-// the paper stays clean. Body text stays in Courier Prime so long docs read.
-$font-typed: 'Special Elite', 'Courier Prime', monospace;
+// Display faces: TT2020 (Fredrick Brennan, SIL Open Font License, see
+// assets/fonts/tt2020/OFL.txt), subset to the characters the site uses.
+// Different wear levels for different jobs, like pages from different
+// machines: heaviest on the big tags, lighter on headings, none on small nav.
+// The paper stays clean; the wear lives only in the letters.
+@font-face { font-family: 'TT2020 Base'; src: url('../fonts/tt2020/TT2020Base-Regular.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'TT2020 B'; src: url('../fonts/tt2020/TT2020StyleB-Regular.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'TT2020 E'; src: url('../fonts/tt2020/TT2020StyleE-Regular.woff2') format('woff2'); font-display: swap; }
+
+$tt-e: 'TT2020 E', 'Courier Prime', monospace;       // tags and Savepoint examples
+$tt-b: 'TT2020 B', 'Courier Prime', monospace;       // headings, site name
+$tt-base: 'TT2020 Base', 'Courier Prime', monospace; // nav items
 
 $max-width: 980px;
 $nav-width: 230px;
@@ -43,7 +51,7 @@ a {
 
 // Typed heading: capitals, letterspaced, underscored
 @mixin typed-heading {
-  font-family: $font-typed;
+  font-family: $tt-b;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -92,7 +100,7 @@ a {
 
     a {
       display: block;
-      font-family: $font-typed;
+      font-family: $tt-base;
       padding: 0.25rem 0 0.25rem 2.4em;
       text-indent: -2.4em; // wrapped titles hang under the text, not the number
       font-size: 0.85rem;
@@ -148,7 +156,7 @@ a {
 }
 
 .hero-tag {
-  font-family: $font-typed;
+  font-family: $tt-e;
   font-size: clamp(1rem, 2.6vw, 1.45rem);
   line-height: 1.55;
   color: $ink;
@@ -178,7 +186,7 @@ a {
 
   // The header is a typed Savepoint; the # line is the page title
   .doc-tag {
-    font-family: $font-typed;
+    font-family: $tt-e;
     font-size: 1rem;
     line-height: 1.6;
 
@@ -240,7 +248,7 @@ a {
 
     // Savepoints and other examples are typed, like the masthead
     code {
-      font-family: $font-typed;
+      font-family: $tt-e;
       background: none;
       padding: 0;
       font-size: 0.9rem;
