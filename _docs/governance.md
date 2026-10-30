@@ -2,16 +2,16 @@
 layout: doc
 title: "Governance and License"
 nav_title: "Governance"
-description: "Who owns Savepoint.Protocol, how it changes, how tools and agents must behave, and what you may and may not do with it."
+description: "Who owns SavepointProtocol, how it changes, how tools and agents must behave, and what you may and may not do with it."
 order: 4
 function: "policy"
 ---
 
-Savepoint.Protocol is authored and maintained by Peter Salvato. This page covers how the protocol changes, the rules tools and AI agents must follow, and what you may do with it.
+SavepointProtocol is authored and maintained by Peter Salvato. This page covers how the protocol changes, the rules tools and AI agents must follow, and what you may do with it.
 
 ## Authorship
 
-Every Savepoint is authored, and so is every change to the protocol. The core syntax, the name and the purpose of the protocol are the intellectual property of its creator. The name is written **Savepoint.Protocol**: a proper noun, not to be abbreviated, altered or generalized.
+Every Savepoint is authored, and so is every change to the protocol. The core syntax, the name and the purpose of the protocol are the intellectual property of its creator. The name is written **SavepointProtocol**: a proper noun, not to be abbreviated, altered or generalized.
 
 ## How the protocol changes
 
@@ -71,7 +71,7 @@ Teams may keep shared Savepoint folders per person or project, agree on which ki
 
 - Fork, rebrand or restructure the syntax or Savepoint logic for commercial or derivative systems
 - Claim authorship of the protocol or its terms
-- Reuse its protected terms outside the protocol: `.savepoints/` as a namespace, Savepoint.Protocol, Recursive Drift, Reflective Timestamping, Savepoint Prompts, Cognitive Checkpoint, Protocol Manifest, Savepoint Syntax, Drift Detected, Syntax Proposal, and Signal Beacon
+- Reuse its protected terms outside the protocol: `.savepoints/` as a namespace, SavepointProtocol, Recursive Drift, Reflective Timestamping, Savepoint Prompts, Cognitive Checkpoint, Protocol Manifest, Savepoint Syntax, Drift Detected, Syntax Proposal, and Signal Beacon
 
 The protocol is open source. The full license is in the [repository](https://github.com/PeterSalvato/Savepoint.Protocol/blob/main/LICENSE).
 

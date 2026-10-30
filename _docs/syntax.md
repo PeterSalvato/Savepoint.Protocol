@@ -2,14 +2,14 @@
 layout: doc
 title: "Savepoint Syntax"
 nav_title: "Syntax"
-description: "Canonical syntax specification for Savepoint Protocol v3.2. Self-closing tag format, field specification, and rules."
+description: "Canonical syntax specification for SavepointProtocol v3.2. Self-closing tag format, field specification, and rules."
 order: 2
 function: "specification"
 ---
 
 ## Overview
 
-This document defines the canonical syntax for Savepoints under Savepoint.Protocol v3.2.
+This document defines the canonical syntax for Savepoints under SavepointProtocol v3.2.
 Syntax is intentionally minimal, symbolic, and machine-aligned.
 It is designed to be:
 
@@ -149,6 +149,6 @@ Until such a Savepoint is confirmed and versioned, all tools and agents must con
 
 ---
 
-Savepoint.Protocol – v3.2 Syntax
+SavepointProtocol – v3.2 Syntax
 Maintained by Peter Salvato – 2025–2026
 

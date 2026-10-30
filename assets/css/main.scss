@@ -80,6 +80,7 @@ a {
 
 .nav-home {
   @include typed-heading;
+  text-transform: none; // the name is always written SavepointProtocol
   font-size: 0.95rem;
   letter-spacing: 0.02em;
   white-space: nowrap;

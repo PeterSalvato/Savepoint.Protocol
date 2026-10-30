@@ -1,11 +1,11 @@
 ---
 layout: default
-title: "Savepoint Protocol"
+title: "SavepointProtocol"
 description: "A protocol for marking where reasoning forks, before the context closes. Version control for thought. Open source, v3.2."
 ---
 
 <div class="home-header">
-  <h1 class="visually-hidden">Savepoint Protocol: version control for thought</h1>
+  <h1 class="visually-hidden">SavepointProtocol: version control for thought</h1>
 <pre class="hero-tag" aria-hidden="true"><span class="t">&lt;Savepoint</span>
   <span class="k">protocol_version:</span>3.2
   <span class="k">category:</span>protocol
