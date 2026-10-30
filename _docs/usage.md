@@ -1,175 +1,129 @@
 ---
 layout: doc
-title: "Usage Guide"
-nav_title: "Usage"
-description: "Practical guide to using Savepoint Protocol. When to drop, solo and team use, AI integration."
+title: "Using Savepoint"
+nav_title: "Using It"
+description: "How to drop Savepoints by hand or have an AI drop them, how to find them again, and how to work back through them."
 order: 3
 function: "guide"
 ---
 
-## When to Drop a Savepoint
+## When to drop one
 
 Drop a Savepoint when:
+
 - A decision was made
-- Something clicked — a phrase locked in, a structure resolved
-- You realize the shape of your thinking just shifted
-- Drift is occurring — you're moving away from prior intent
-- You need to flag a recursion point for yourself, your team, or an AI agent
+- Something clicked: a phrase locked in, a structure resolved
+- The shape of your thinking just shifted
+- You notice you're drifting from what you meant
 
-A Savepoint records what just happened, in the moment it happens.
+Write it in the moment. If you can write it without stopping to think, it probably wasn't a Savepoint.
 
----
-
-## Writing Your First Savepoint
+## Writing one by hand
 
 ```plaintext
 <Savepoint
-  protocol_version:3.0
-  category:design_logic
+  protocol_version:3.2
+  category:decision
   function:declaration
-  timestamp:2025-04-08T21:24:00Z
-  # A Savepoint declares: "This moment matters. Return here later."
+  timestamp:2026-03-13T05:09:37Z
+  project:savepoint.protocol
+  context:A savepoint has to make sense without the chat that produced it.
+  # Add an optional context field so every savepoint can be read on its own.
 />
 ```
 
-The format is a self-closing tag. Every field is `key:value`. The content begins with `#` and carries the semantic weight — one line, one crystallized thought.
+Every field is `key:value`, and the `#` line carries the moment in one sentence. [Syntax]({{ '/docs/syntax/' | relative_url }}) lists every field.
 
-Save it to a file:
+Keep them in a `.savepoints/` folder, one file each:
+
 ```
-.savepoints/2025-04-08T21-24-00Z--this-moment-matters.md
+.savepoints/2026-03-13__context-field.md
 ```
 
-Or write it inline — in a chat, a notebook, a terminal. Savepoints are portable.
+Or write them inline, in a chat, a notebook or a terminal. A Savepoint works anywhere text does.
 
----
+A few rules keep the trail useful: never overwrite a Savepoint, don't group or summarize them, and add a new one when your thinking changes instead of editing the old one.
 
-## Solo Use
+## Having an AI drop them
 
-Drop Savepoints during creative work, journaling, design, problem-solving. Return later to reflect, clarify, track drift, or recurse through meaning.
+Paste this block into your assistant's custom instructions or system prompt. It will then drop Savepoints during your conversations, which you can find later in your exports.
 
-You don't need a platform. You need a symbol.
+```
+SAVEPOINT PROTOCOL (v3.0)
 
-### Behavior Rules
+When I have a breakthrough, make a decision, change direction, or crystallize something important during our conversation, emit a Savepoint. Do not ask permission — just emit it inline when the moment happens.
 
-- Never overwrite a Savepoint
-- Never group them by theme or type
-- Never compress or re-summarize
-- Only reference them. Only return to them.
+Format (exact):
 
-What you build is a trail through the jungle, one you can follow back.
+<Savepoint
+  protocol_version:3.0
+  category:[domain]
+  function:[role]
+  timestamp:[current ISO 8601 UTC]
+  # [one sentence: the crystallized thought]
+/>
 
----
+Categories: system_logic, design_note, architecture, decision, drift_detected, creative, process, debugging, insight
+Functions: declaration, revision, drift_detected, correction, milestone, observation
 
-## Team Use
+Rules:
+- One sentence on the # line. Not a summary. The exact thought that crystallized.
+- Emit when something shifts — a decision locks, a pattern emerges, a direction changes.
+- Do NOT emit for routine information exchange. Only for cognitive turning points.
+- Do NOT ask "should I emit a Savepoint?" — just emit it when the moment is real.
+- If I say "savepoint" or "drop a savepoint," emit one for whatever we just resolved.
+```
 
-Savepoint.Protocol supports multi-user environments:
+Where to paste it:
 
-- Each participant lays Savepoints during shared sessions
-- Savepoints remain authored, timestamped, and context-specific
-- Teams can:
-  - Layer Savepoints across roles and subgroups
-  - Query semantic drift or insight events
-  - Track decisions through collective recursion
+- **ChatGPT:** Settings → Personalization → Custom instructions
+- **Claude:** a Project's instructions, or your system prompt
+- **Gemini:** Settings → Extensions & Custom Instructions, or at the start of a chat
 
-The result is a shared map of who decided what, and when, across a complex collaboration.
+If something just clicked and the assistant didn't catch it, say "savepoint" and it will drop one.
 
----
+## Finding them again
 
-## AI + System Use
+Savepoints are plain text, so `grep` finds them anywhere:
 
-Savepoints are readable and generatable by LLMs, CLI tools, grep-based workflows, notebooks, and semantic search layers. Agents can emit Savepoints, interpret them, and use them for orientation or flagging.
+```bash
+grep -r "<Savepoint" ~/exports/
+grep -r "^  #" ~/exports/   # the # lines only
+```
 
-### Claude Code Skill
+For ChatGPT, export your data (Settings → Data Controls → Export Data), then run the extractor from this repository:
 
-If you use Claude Code, install the `/savepoint` skill for native drop/search/list/read:
+```bash
+tools/bin/sp_extract.sh conversations.json
+```
+
+If you use Claude Code, install the `/savepoint` skill to drop, search, list and read Savepoints from the editor:
 
 ```bash
 mkdir -p ~/.claude/skills/savepoint
 cp skills/claude-code/SKILL.md ~/.claude/skills/savepoint/SKILL.md
 ```
 
-### Shell CLI
+Then search with `/savepoint search "the query"`.
 
-Extract Savepoints from ChatGPT conversation exports:
+The repository also has helper scripts in `scripts/core/` for splitting large exports and converting chats to markdown. Each one prints its own usage.
 
-```bash
-tools/bin/sp_extract.sh conversations.json
-```
+## Working back through them
 
----
+When you return to a Savepoint, these questions help you pick the thinking back up:
 
-## Recursive Prompts
+- **Clarify:** If I returned to this a year from now, what would I wish I had clarified before leaving it?
+- **Check for drift:** What belief or assumption might have shifted since this was written?
+- **Re-enter:** What was the context around this, and what do I see differently now?
+- **Compare:** Layered with the others from this session, what does this one add or contradict?
+- **Recheck:** If I wrote this again today, what would change, and what wouldn't?
 
-Savepoints pair with recursive prompts for deeper reentry. Use them to work back through a moment you marked.
+You can ask them yourself, ask an AI to work through them with you, or record the answer as a new Savepoint with `function:prompted_reflection`.
 
-**Savepoint Clarification:**
-> If I returned to this Savepoint a year from now, what would I wish I had clarified before leaving it?
+## On a team
 
-**Reverse Drift:**
-> What belief or assumption might have shifted since this Savepoint was written?
+Each person drops their own Savepoints during shared work. Because every one is authored and timestamped, the trail becomes a record of who decided what, and when. Teams can agree on which kinds of drift need group review, and keep shared `.savepoints/` folders per person or project.
 
-**Semantic Reentry:**
-> What was the context surrounding this Savepoint — and what do I now see differently?
+## Over time
 
-**Self-Alignment Recheck:**
-> If I wrote this Savepoint again today, what would change — and what wouldn't?
-
-See [prompts.md](./prompts.md) for the full set.
-
----
-
-## Examples
-
-### Flagging drift in a live session
-
-```plaintext
-<Savepoint
-  protocol_version:3.0
-  category:runtime_disagreement
-  function:drift_detected
-  timestamp:2025-04-08T20:58:00Z
-  # Assistant defaulted to markdown block when v3.0 specifies self-closing syntax. Realigned.
-/>
-```
-
-### Marking a turning point
-
-```plaintext
-<Savepoint
-  protocol_version:3.0
-  category:project_commitment
-  function:inflection
-  timestamp:2025-04-08T21:00:00Z
-  # We shifted from ideation into execution. System boundary conditions now locked.
-/>
-```
-
-### Reentry point for future self
-
-```plaintext
-<Savepoint
-  protocol_version:3.0
-  category:recursive_onboarding
-  function:reentry_marker
-  timestamp:2025-04-08T21:04:00Z
-  # If returning here from a future drift, resume with version-history.md and cross-reference today's manifest.
-/>
-```
-
-### Intentional drift acknowledgment
-
-```plaintext
-<Savepoint
-  protocol_version:3.0
-  category:protocol_theory
-  function:intentional_drift
-  timestamp:2025-04-08T21:06:00Z
-  # Breaking syntax convention here to test recursive tolerance. This Savepoint knowingly deviates.
-/>
-```
-
----
-
-## Why It Works
-
-Meaning gets lost when it is only stored, so Savepoints **mark** it. Understanding **drifts** over time, so Savepoints record where it stood. And in the middle of the work, no one can tell what will matter later. A Savepoint leaves you a way back.
+One Savepoint is a flag. Fifty across six months are a map of how your thinking moved.

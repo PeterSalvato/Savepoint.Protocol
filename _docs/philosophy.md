@@ -87,5 +87,5 @@ I think of it as marking a path through dense jungle. On the first pass you can'
 ## Next
 
 - [Syntax]({{ '/docs/syntax/' | relative_url }}): the full tag and its fields
-- [Usage]({{ '/docs/usage/' | relative_url }}): dropping and finding Savepoints
-- [Chatbot Instructions]({{ '/docs/chatbot-instructions/' | relative_url }}): having an AI drop them for you
+- [Using It]({{ '/docs/usage/' | relative_url }}): dropping Savepoints by hand or with an AI, and finding them again
+- [Governance]({{ '/docs/governance/' | relative_url }}): authorship, rules and license
