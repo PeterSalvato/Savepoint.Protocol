@@ -7,9 +7,11 @@ order: 1
 function: "declaration"
 ---
 
-Savepoint exists because I lost months of thinking. The novel, the business architecture, ideation sessions that produced real breakthroughs. The sessions ended. The context evaporated. The model started fresh every time.
+A lot of my thinking happens in long conversations with AI models. I've worked through a novel that way, and the architecture of a business, and dozens of ideation sessions. Some of those sessions produced real breakthroughs.
 
-Savepoint doesn't make the model remember. It gives me a way to carry the decisions forward myself, and to give the model enough orientation to pick up where the last session left off.
+Then the session ended. The context was gone, and the next conversation started from nothing. I lost months of thinking that way.
+
+Savepoint is what I built so it wouldn't happen again. It doesn't make the model remember. It gives me a way to mark the decisions as they happen, carry them forward myself, and hand the next session enough to pick up where the last one left off.
 
 ## What a Savepoint is
 
