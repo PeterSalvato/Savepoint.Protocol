@@ -2,7 +2,7 @@
 layout: doc
 title: "Using Savepoint"
 nav_title: "Using It"
-description: "How to drop Savepoints by hand or have an AI drop them, how to find them again, and how to work back through them."
+description: "How to write Savepoints typed, by hand or with an AI, how to find them again by search or by eye, and how to work back through them."
 order: 3
 function: "guide"
 ---
@@ -18,7 +18,7 @@ Drop a Savepoint when:
 
 Write it in the moment. If you can write it without stopping to think, it probably wasn't a Savepoint.
 
-## Writing one by hand
+## Writing one
 
 ```plaintext
 <Savepoint
@@ -41,6 +41,19 @@ Keep them in a `.savepoints/` folder, one file each:
 ```
 
 Or write them inline, in a chat, a notebook or a terminal. A Savepoint works anywhere text does.
+
+## Typed, handwritten or scanned
+
+A Savepoint is the same tag however you make it. What changes is how you find it again.
+
+**Typed.** In a chat, an editor, a terminal or a text file. This is the form tools can search, and the form an AI drops for you.
+
+**Handwritten.** In a notebook, on a legal pad, in the margin of a printout. Write the same tag you would type: open with `<Savepoint`, put each field on its own line, write the `#` line last, and close with `/>`. Keep the fields short. The timestamp and the `#` line carry the most weight on paper.
+
+**Scanned.** A handwritten Savepoint can be found two ways:
+
+- **By eye.** The `<Savepoint` and `/>` brackets stand out on a page, so you can flip through a notebook and find the turns without rereading everything around them.
+- **By camera.** Photograph or scan the page, then run it through text recognition or an AI that reads images. The tag comes out as text, and from then on it is searchable alongside your typed Savepoints.
 
 A few rules keep the trail useful: never overwrite a Savepoint, don't group or summarize them, and add a new one when your thinking changes instead of editing the old one.
 
@@ -84,7 +97,7 @@ If something just clicked and the assistant didn't catch it, say "savepoint" and
 
 ## Finding them again
 
-Savepoints are plain text, so `grep` finds them anywhere:
+Typed Savepoints are plain text, so `grep` finds them anywhere:
 
 ```bash
 grep -r "<Savepoint" ~/exports/
@@ -105,6 +118,8 @@ cp skills/claude-code/SKILL.md ~/.claude/skills/savepoint/SKILL.md
 ```
 
 Then search with `/savepoint search "the query"`.
+
+For notebooks, scan the pages and convert them to text first. The tags then show up in the same searches as everything else.
 
 The repository also has helper scripts in `scripts/core/` for splitting large exports and converting chats to markdown. Each one prints its own usage.
 
