@@ -62,17 +62,19 @@ A few rules keep the trail useful: never overwrite a Savepoint, don't group or s
 Paste this block into your assistant's custom instructions or system prompt. It will then drop Savepoints during your conversations, which you can find later in your exports.
 
 ```
-SAVEPOINT PROTOCOL (v3.0)
+SAVEPOINT PROTOCOL (v3.2)
 
 When I have a breakthrough, make a decision, change direction, or crystallize something important during our conversation, emit a Savepoint. Do not ask permission — just emit it inline when the moment happens.
 
 Format (exact):
 
 <Savepoint
-  protocol_version:3.0
+  protocol_version:3.2
   category:[domain]
   function:[role]
   timestamp:[current ISO 8601 UTC]
+  project:[project name, if there is one]
+  context:[one sentence: what was decided or realized, readable without this chat]
   # [one sentence: the crystallized thought]
 />
 
@@ -81,6 +83,8 @@ Functions: declaration, revision, drift_detected, correction, milestone, observa
 
 Rules:
 - One sentence on the # line. Not a summary. The exact thought that crystallized.
+- The context line must make sense to someone who never saw this conversation.
+- Leave out project if there isn't a clear one.
 - Emit when something shifts — a decision locks, a pattern emerges, a direction changes.
 - Do NOT emit for routine information exchange. Only for cognitive turning points.
 - Do NOT ask "should I emit a Savepoint?" — just emit it when the moment is real.
