@@ -6,7 +6,7 @@
 <body>
   <div class="site-wrapper">
     <nav class="site-nav">
-      {% unless page.url == '/' %}<a href="{{ '/' | relative_url }}" class="nav-home" aria-label="SavepointProtocol home">&lt;Savepoint/&gt;</a>{% endunless %}
+      <a href="{{ '/' | relative_url }}" class="nav-home" aria-label="SavepointProtocol home">&lt;Savepoint/&gt;</a>
       <ul class="nav-docs">
         {% assign ordered_docs = site.docs | sort: "order" %}
         {% for doc in ordered_docs %}
