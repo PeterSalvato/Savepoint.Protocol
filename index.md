@@ -18,7 +18,7 @@ description: "A protocol for marking where reasoning forks, before the context c
 
 <div class="home-content">
 
-<p>The most perishable part of any project is the reasoning between decisions. Files survive and decisions get recorded, but the thinking that connected them is lost when the conversation ends or the context window closes.</p>
+<p>The most perishable part of any project is the reasoning between decisions. Files survive and decisions get recorded, but the thinking that connected them is lost in the notebook, the notes app or the chat where it happened.</p>
 
 <p>Savepoint marks the moment a line of thinking forks, while you still remember why. It is one self-closing tag: atomic, parseable, and writable by hand.</p>
 
