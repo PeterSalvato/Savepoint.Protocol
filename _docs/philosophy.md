@@ -7,11 +7,11 @@ order: 1
 function: "declaration"
 ---
 
-A lot of my thinking happens in long conversations with AI models. I've worked through a novel that way, and the architecture of a business, and dozens of ideation sessions. Some of those sessions produced real breakthroughs.
+My thinking has always ended up in containers that bury it. It started in journals and sketchbooks. Then I thought out loud, dictating into notes apps and Obsidian. Now a lot of it happens in long conversations with AI models. I've worked through a novel that way, the architecture of a business, and a lot of creative ideation.
 
-Then the session ended. The context was gone, and the next conversation started from nothing. I lost months of thinking that way.
+Each of those is flat. A decision from page forty of a sketchbook, halfway down a dictated note, or three hundred messages into a chat is in there somewhere, mixed in with everything around it. Finding it means rereading all of it, so mostly I didn't, and I lost months of thinking that way.
 
-Savepoint is what I built so it wouldn't happen again. It doesn't make the model remember. It gives me a way to mark the decisions as they happen, carry them forward myself, and hand the next session enough to pick up where the last one left off.
+Savepoint is a mark I make at the moment something is decided, in whatever I happen to be writing in. Later I can find the turns without rereading everything between them, and hand the next session, or the next notebook, enough to pick up where the last one left off.
 
 ## What a Savepoint is
 
