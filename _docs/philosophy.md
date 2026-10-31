@@ -11,7 +11,9 @@ My thinking has always ended up in containers that bury it. It started in journa
 
 Each of those is flat. A decision from page forty of a sketchbook, halfway down a dictated note, or three hundred messages into a chat is in there somewhere, mixed in with everything around it. Finding it means rereading all of it, so mostly I didn't, and I lost months of thinking that way.
 
-Savepoint is a mark I make at the moment something is decided, in whatever I happen to be writing in. Later I can find the turns without rereading everything between them, and hand the next session, or the next notebook, enough to pick up where the last one left off.
+Better AI memory hasn't fixed this. It keeps more, but it still can't tell what mattered. It holds on to a passing aside and loses the decision the whole project turned on.
+
+Savepoint is a mark I make at the moment something is decided, in whatever I happen to be writing in, so the call about what mattered is mine. Later I can find the turns without rereading everything between them, and hand the next session, or the next notebook, enough to pick up where the last one left off.
 
 ## What a Savepoint is
 
