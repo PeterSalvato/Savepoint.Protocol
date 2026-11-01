@@ -23,6 +23,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - DESIGN.md
   - LICENSE.md
   - CITATION.cff
   - NOTICE
