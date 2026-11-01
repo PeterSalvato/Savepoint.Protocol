@@ -64,14 +64,16 @@ All type is monospaced and typewritten. Body is Courier Prime (Google Fonts). Di
 ### Page header tag
 Every doc page opens with a typed Savepoint whose fields describe the page (`document:02`, `function:specification`, `protocol_version:3.2`) and whose `#` line is the page title. The home page opens with the protocol's declaration tag. This is the site's signature. Don't add a second tag-shaped element beside it.
 
-### Navigation (under revision)
-The current nav is a numbered list in a 230px sidebar. Peter called it "lazy and somewhat boring." A critique on November 1, 2026 found:
-- It doesn't connect to the page header. The nav numbers pages 01–04 and the header types `document:02`, but nothing links them visually.
-- Numbers and the GitHub link use `ink-faint` and fail contrast.
-- The current page is marked by color and a faked bold.
-- On phones, a 2-column grid with an ambiguous reading order, small tap targets, and 210px of nav above the content.
+### Direction: printed spec sheet (approved in mock, November 1, 2026)
+The pages move from a docs-site sidebar to an editorial layout, a specification sheet. Mock: https://claude.ai/artifact/9G8cdnianh4BDqpghhAX8b
+- **Running head:** the mark, "SavepointProtocol · version 3.2", and GitHub, over a 1px ink rule.
+- **Contents across the top of every page:** all four documents with number and title, the current one in purple under a heavier purple rule. On phones it folds to one "Contents · 02 Syntax" line that opens on tap. Every page must show where the reader is and where else they can go (Peter: "I don't know if a person would know how to navigate this site").
+- **Title block:** the document number typed at poster size in Style E is the page's image. Beside it: the `#` title, a one-line dek, and the page's Savepoint as a small colophon.
+- **Sections:** a 12-column grid, section marks (§1, §2) and labels in a left margin column, text in a measure.
+- **The tag as specimen:** on the Syntax page the canonical tag is set large and each field is selectable, with its definition beside it. It replaces the field table. Field names are dotted-underlined so they read as clickable.
+- **Foot:** large previous and next links.
 
-Direction under consideration: a typed contents page (title, dot leaders, document number), keyed to the `document:` field. Rejected: checkbox form (`[x]` reads as "done") and nav written as a tag (invents syntax that isn't Savepoint).
+The 1 November critique of the old sidebar (no link to the page header, failing contrast, faked bold, cramped phone grid) is answered by this layout. Rejected along the way: checkbox nav (`[x]` reads as "done"), nav written as a tag (invents syntax), and a small pager as the only nav.
 
 ### Code blocks
 `code-bg` fill with a 2px `rule` left edge. Savepoint examples inside are set in Style E, like the page tags. Long lines wrap; never scroll sideways.
@@ -84,7 +86,7 @@ Purple, underlined 1px with a 2px offset. Hover darkens to `ribbon-dark`.
 
 ## Layout
 
-Sidebar and content in a 980px frame. Running text holds to 66ch. Below 768px the sidebar stacks above the content. The `---` rules in the markdown are hidden, and spacing separates sections.
+A 12-column grid in a frame of about 1180px, with a margin column for section marks. Running text holds to 62–66ch. Below 860px everything goes to one column. The `---` rules in the markdown are hidden, and spacing separates sections.
 
 ## Do
 
@@ -103,6 +105,6 @@ Sidebar and content in a 980px frame. Running text holds to 66ch. Below 768px th
 
 ## Open
 
-- Navigation design (see Navigation).
+- Applying the spec-sheet direction to the home page and the other three docs.
 - Darkening `ink-faint`, or limiting it to syntax only, to fix contrast.
 - Syntax page: Title Case headings and lowercase "savepoint" still to clean up.
