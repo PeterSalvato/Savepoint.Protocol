@@ -3,6 +3,7 @@ layout: doc
 title: "Governance and License"
 nav_title: "Governance"
 description: "Who owns SavepointProtocol, how it changes, how tools and agents must behave, and what you may and may not do with it."
+dek: "Who owns the protocol, how it changes, and what you may do with it."
 order: 4
 function: "policy"
 ---

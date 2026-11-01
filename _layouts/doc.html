@@ -1,32 +1,40 @@
 ---
 layout: default
 ---
+{% assign num = page.order | prepend: "0" | slice: -2, 2 %}
 <article class="doc-page">
-  <header class="doc-header">
-    <div class="doc-tag">
-      <span class="t">&lt;Savepoint</span>
-      <span class="f"><span class="k">document:</span>{{ page.order | prepend: "0" | slice: -2, 2 }}</span>
-      <span class="f"><span class="k">function:</span>{{ page.function }}</span>
-      <span class="f"><span class="k">protocol_version:</span>3.2</span>
-      <h1 class="f"><span class="c"># </span>{{ page.title }}</h1>
-      <span class="t">/&gt;</span>
+  <header class="title">
+    <div class="num" aria-hidden="true">{{ num }}</div>
+    <div class="tblock">
+      <h1><span class="c"># </span>{{ page.title }}</h1>
+      {% if page.dek %}<p class="dek">{{ page.dek }}</p>{% endif %}
+      <div class="colophon" aria-label="Document record">
+        <span class="t">&lt;Savepoint</span>
+        <span class="f"><span class="k">document:</span>{{ num }}</span>
+        <span class="f"><span class="k">function:</span>{{ page.function }}</span>
+        <span class="f"><span class="k">protocol_version:</span>3.2</span>
+        <span class="t">/&gt;</span>
+      </div>
     </div>
-    {% if page.subtitle %}<p class="doc-subtitle">{{ page.subtitle }}</p>{% endif %}
   </header>
   <div class="doc-content">
     {{ content }}
   </div>
-  <nav class="doc-nav-footer">
+  <nav class="prevnext" aria-label="Previous and next">
     {% assign ordered_docs = site.docs | sort: "order" %}
     {% for doc in ordered_docs %}
       {% if doc.url == page.url %}
         {% if forloop.index > 1 %}
           {% assign prev_index = forloop.index0 | minus: 1 %}
-          <a href="{{ ordered_docs[prev_index].url | relative_url }}" class="doc-prev">&larr; {{ ordered_docs[prev_index].nav_title | default: ordered_docs[prev_index].title }}</a>
+          {% assign prev = ordered_docs[prev_index] %}
+          <a href="{{ prev.url | relative_url }}" rel="prev"><small>&larr; Previous</small><b>{{ prev.order | prepend: "0" | slice: -2, 2 }} {{ prev.nav_title }}</b></a>
+        {% else %}
+          <a href="{{ '/' | relative_url }}" rel="prev"><small>&larr; Home</small><b>&lt;Savepoint/&gt;</b></a>
         {% endif %}
         {% assign next_index = forloop.index0 | plus: 1 %}
         {% if next_index < ordered_docs.size %}
-          <a href="{{ ordered_docs[next_index].url | relative_url }}" class="doc-next">{{ ordered_docs[next_index].nav_title | default: ordered_docs[next_index].title }} &rarr;</a>
+          {% assign next = ordered_docs[next_index] %}
+          <a href="{{ next.url | relative_url }}" rel="next"><small>Next &rarr;</small><b>{{ next.order | prepend: "0" | slice: -2, 2 }} {{ next.nav_title }}</b></a>
         {% endif %}
       {% endif %}
     {% endfor %}

@@ -4,23 +4,31 @@
   {% include head.html %}
 </head>
 <body>
-  <div class="site-wrapper">
-    <nav class="site-nav">
-      <a href="{{ '/' | relative_url }}" class="nav-home" aria-label="SavepointProtocol home">&lt;Savepoint/&gt;</a>
-      <ul class="nav-docs">
-        {% assign ordered_docs = site.docs | sort: "order" %}
-        {% for doc in ordered_docs %}
-        <li{% if page.url == doc.url %} class="active"{% endif %}>
-          <a href="{{ doc.url | relative_url }}">{{ doc.nav_title | default: doc.title }}</a>
-        </li>
-        {% endfor %}
-      </ul>
-      <a href="https://github.com/PeterSalvato/Savepoint.Protocol" class="nav-github">GitHub</a>
+  <div class="sheet">
+    <header class="head">
+      <a href="{{ '/' | relative_url }}" class="mark" aria-label="SavepointProtocol home"><span class="t">&lt;</span>Savepoint<span class="t">/&gt;</span></a>
+      <span class="run">SavepointProtocol &middot; version 3.2</span>
+      <a href="https://github.com/PeterSalvato/Savepoint.Protocol" class="gh">GitHub &nearr;</a>
+    </header>
+    {% assign ordered_docs = site.docs | sort: "order" %}
+    <nav class="index" aria-label="Documents">
+      <details open>
+        <summary><span>Contents</span>{% for doc in ordered_docs %}{% if page.url == doc.url %}<b>{{ doc.order | prepend: "0" | slice: -2, 2 }} {{ doc.nav_title }}</b>{% endif %}{% endfor %}</summary>
+        <ol>
+          {% for doc in ordered_docs %}
+          <li><a href="{{ doc.url | relative_url }}"{% if page.url == doc.url %} aria-current="page"{% endif %}><span class="n">{{ doc.order | prepend: "0" | slice: -2, 2 }}</span><span class="t">{{ doc.nav_title | default: doc.title }}</span></a></li>
+          {% endfor %}
+        </ol>
+      </details>
     </nav>
     <main class="site-content">
       {{ content }}
-      {% include footer.html %}
     </main>
+    {% include footer.html %}
   </div>
+  <script>
+    // Phones start with the contents folded, so the document comes first.
+    if (window.matchMedia('(max-width: 860px)').matches) document.querySelector('.index details').removeAttribute('open');
+  </script>
 </body>
 </html>

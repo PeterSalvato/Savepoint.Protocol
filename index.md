@@ -24,9 +24,6 @@ description: "A protocol for marking where reasoning forks, before the context c
 
 <p>Open source, version 3.2. It works on paper, in plain text, or from a command line.</p>
 
-<div class="home-links">
-  <a href="{{ '/docs/philosophy/' | relative_url }}">Read the docs &rarr;</a>
-  <a href="https://github.com/PeterSalvato/Savepoint.Protocol">View on GitHub &rarr;</a>
-</div>
+<a class="start" href="{{ '/docs/philosophy/' | relative_url }}"><small>Start reading &rarr;</small><b>01 Why it exists</b></a>
 
 </div>

@@ -1,8 +1,9 @@
 ---
 layout: doc
 title: "Why Savepoint Exists"
-nav_title: "Why It Exists"
+nav_title: "Why it exists"
 description: "Why Savepoint exists, what a Savepoint is, and real ones from the trail left while building the protocol."
+dek: "Why Savepoint exists, what a Savepoint is, and real ones from the trail left while building the protocol."
 order: 1
 function: "declaration"
 ---

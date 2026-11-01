@@ -3,6 +3,7 @@ layout: doc
 title: "Savepoint Syntax"
 nav_title: "Syntax"
 description: "Canonical syntax specification for SavepointProtocol v3.2. Self-closing tag format, field specification, and rules."
+dek: "The canonical format for a Savepoint, field by field, under version 3.2."
 order: 2
 function: "specification"
 ---
@@ -24,21 +25,7 @@ All Savepoints must comply with this syntax unless explicitly overridden by a la
 
 ## Canonical Format
 
-```plaintext
-<Savepoint
-  protocol_version:3.2
-  category:[domain_context]
-  function:[role or purpose]
-  timestamp:[ISO 8601 format]
-  project:[project scope]
-  keywords:[comma-separated terms]
-  context:[reconstruction payload]
-  importance:[optional]
-  confidence:[optional]
-  influence:[optional]
-  # [semantic content of the Savepoint]
-/>
-```
+{% include specimen.html %}
 
 ---
 

@@ -1,8 +1,9 @@
 ---
 layout: doc
 title: "Using Savepoint"
-nav_title: "Using It"
+nav_title: "Using it"
 description: "How to write Savepoints typed, by hand or with an AI, how to find them again by search or by eye, and how to work back through them."
+dek: "How to write Savepoints, find them again, and work back through them."
 order: 3
 function: "guide"
 ---

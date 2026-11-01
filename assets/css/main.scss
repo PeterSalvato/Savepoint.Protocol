@@ -1,14 +1,17 @@
 ---
 ---
 
-// Typed document. Courier Prime on cool copy paper, with ditto-machine
-// purple as the one accent. Kept clear of the Joinery palette (warm cream,
-// terracotta) on purpose. Clean, never distressed.
+// A printed specification sheet. Courier Prime on cool copy paper, with
+// ditto-machine purple as the one accent. Kept clear of the Joinery palette
+// (warm cream, terracotta) on purpose. Clean, never distressed.
+// Layout: running head, contents across the top of every page, the document
+// number typed at poster size, section marks in a margin column.
 $paper: #eef0ee;
 $ink: #26282b;
 $ink-muted: #5f6368;
-$ink-faint: #868a8f;
-$ribbon: #5b4a8a;      // spirit-duplicator purple, for links and the active page
+$ink-faint: #868a8f;   // decorative only: leaders, rules in type. Fails contrast for text.
+$syntax: #767a7f;      // tag brackets and field keys; 4.5:1 on paper
+$ribbon: #5b4a8a;      // spirit-duplicator purple: links, the current page, # lines
 $ribbon-dark: #43356b;
 $rule: #c6cac8;
 $code-bg: #e3e6e4;
@@ -17,19 +20,20 @@ $font: 'Courier Prime', 'Courier New', monospace;
 // Display faces: TT2020 (Fredrick Brennan, SIL Open Font License, see
 // assets/fonts/tt2020/OFL.txt), subset to the characters the site uses.
 // Different wear levels for different jobs, like pages from different
-// machines: heaviest on the big tags, lighter on headings, none on small nav.
-// The paper stays clean; the wear lives only in the letters.
+// machines: heaviest on tags and numbers, lighter on headings, none on small nav.
+// The paper stays clean; the wear lives only in the letters. TT2020 has no bold.
 @font-face { font-family: 'TT2020 Base'; src: url('../fonts/tt2020/TT2020Base-Regular.woff2') format('woff2'); font-display: swap; }
 @font-face { font-family: 'TT2020 B'; src: url('../fonts/tt2020/TT2020StyleB-Regular.woff2') format('woff2'); font-display: swap; }
 @font-face { font-family: 'TT2020 E'; src: url('../fonts/tt2020/TT2020StyleE-Regular.woff2') format('woff2'); font-display: swap; }
 
-$tt-e: 'TT2020 E', 'Courier Prime', monospace;       // tags and Savepoint examples
-$tt-b: 'TT2020 B', 'Courier Prime', monospace;       // headings, site name
-$tt-base: 'TT2020 Base', 'Courier Prime', monospace; // nav items
+$tt-e: 'TT2020 E', 'Courier Prime', monospace;
+$tt-b: 'TT2020 B', 'Courier Prime', monospace;
+$tt-base: 'TT2020 Base', 'Courier Prime', monospace;
 
-$max-width: 980px;
-$nav-width: 230px;
-$content-max: 66ch;
+$sheet: 1180px;
+$measure: 62ch;
+$gap: 24px;
+$narrow: 860px;
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -39,6 +43,7 @@ body {
   color: $ink;
   line-height: 1.6;
   font-size: 16px;
+  padding: 0 #{"max(16px, env(safe-area-inset-right, 0px))"} 0 #{"max(16px, env(safe-area-inset-left, 0px))"};
 }
 
 a {
@@ -49,98 +54,84 @@ a {
   &:hover { color: $ribbon-dark; }
 }
 
-// Typed heading: capitals, letterspaced, underscored
-@mixin typed-heading {
+:focus-visible { outline: 1px dashed $ribbon; outline-offset: 3px; }
+
+.sheet { max-width: $sheet; margin: 0 auto; overflow-x: clip; }
+
+// Sentence case in the source; CSS sets typed capitals
+@mixin typed-label {
   font-family: $tt-b;
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
 }
 
-.site-wrapper {
-  display: flex;
-  min-height: 100vh;
-  max-width: $max-width;
-  margin: 0 auto;
+// Running head, like the header line on every page of a typed spec
+.head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1.25rem 0 0.9rem;
+  border-bottom: 1px solid $ink;
+  font-family: $tt-base;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+
+  .run { color: $ink-muted; text-transform: uppercase; }
 }
 
-// Navigation
-.site-nav {
-  width: $nav-width;
-  flex-shrink: 0;
-  padding: 2rem 1.5rem;
-  border-right: 1px solid $rule;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.nav-home {
-  // The mark: the protocol's self-closing tag, typed. Same place on every page.
-  @include typed-heading;
+.mark {
+  // The protocol's self-closing tag, typed. Same place on every page.
   font-family: $tt-e;
-  text-transform: none;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   letter-spacing: 0;
   white-space: nowrap;
   color: $ink;
   text-decoration: none;
-  margin-bottom: 1.5rem;
-  display: block;
+  .t { color: $syntax; }
   &:hover { color: $ribbon; }
 }
 
-.nav-docs {
-  list-style: none;
-  flex: 1;
-  counter-reset: doc;
-
-  li {
-    counter-increment: doc;
-
-    a {
-      display: block;
-      font-family: $tt-base;
-      padding: 0.25rem 0 0.25rem 2.4em;
-      text-indent: -2.4em; // wrapped titles hang under the text, not the number
-      font-size: 0.85rem;
-      color: $ink-muted;
-      text-decoration: none;
-      &::before {
-        content: counter(doc, decimal-leading-zero) "  ";
-        white-space: pre;
-        color: $ink-faint;
-      }
-      &:hover { color: $ink; }
-    }
-
-    &.active a {
-      color: $ribbon;
-      font-weight: 700;
-      &::before { color: $ribbon; }
-    }
-  }
-}
-
-.nav-github {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: $ink-faint;
+.gh {
+  color: $ink;
   text-decoration: none;
-  margin-top: 1.5rem;
+  text-transform: uppercase;
   &:hover { color: $ribbon; }
 }
 
-// Main content
-.site-content {
-  flex: 1;
-  min-width: 0;
-  padding: 2.5rem 2.5rem 2rem;
-  max-width: calc(#{$content-max} + 5rem);
+// Contents across the top: every document visible from every page
+.index {
+  summary { display: none; }
+
+  ol {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $gap;
+    padding: 1rem 0 1.1rem;
+    border-bottom: 1px solid $rule;
+  }
+
+  a {
+    display: grid;
+    gap: 0.1rem;
+    padding-top: 0.6rem;
+    border-top: 2px solid $rule;
+    color: $ink-muted;
+    text-decoration: none;
+    &:hover { border-top-color: $ink; color: $ink; }
+  }
+
+  .n { font-family: $tt-e; font-size: 1.5rem; line-height: 1; color: $ink; }
+  .t { font-family: $tt-base; font-size: 0.95rem; }
+
+  [aria-current] {
+    border-top: 3px solid $ribbon;
+    padding-top: calc(0.6rem - 1px);
+    color: $ribbon;
+    .n { color: $ribbon; }
+  }
 }
 
 .visually-hidden {
@@ -152,85 +143,136 @@ a {
   white-space: nowrap;
 }
 
-// Homepage: the protocol's own tag is the masthead
+// Homepage: the protocol's declaration tag is the masthead
 .home-header {
-  margin-bottom: 2.25rem;
-  padding-bottom: 1.5rem;
+  padding: 3rem 0;
+  border-bottom: 1px solid $rule;
 }
 
 .hero-tag {
   font-family: $tt-e;
-  font-size: clamp(1rem, 2.6vw, 1.45rem);
-  line-height: 1.55;
+  font-size: clamp(1.15rem, 2.9vw, 2.3rem);
+  line-height: 1.45;
   color: $ink;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 
-  .t { color: $ink-faint; } // tag brackets are syntax, not the mark
-  .k { color: $ink-faint; }
+  .t, .k { color: $syntax; }
   .c { color: $ribbon; }
 }
 
 .home-content {
-  p { margin-bottom: 1.1rem; }
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: $gap;
+  padding: 3rem 0;
 
-  .home-links {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  > * { grid-column: 4 / 11; }
+  p { max-width: $measure; margin-bottom: 1rem; }
+  > p:first-child { font-size: 1.35rem; line-height: 1.45; max-width: 40ch; }
+}
+
+.start, .prevnext a {
+  display: grid;
+  gap: 0.2rem;
+  color: $ink;
+  text-decoration: none;
+
+  small { @include typed-label; font-size: 0.78rem; letter-spacing: 0.12em; color: $ink-muted; }
+  b { font-family: $tt-e; font-weight: 400; font-size: clamp(1.3rem, 2.4vw, 1.9rem); }
+  &:hover b { color: $ribbon; }
+}
+
+.start { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid $ink; }
+
+// Doc pages: title block with the document number as the image
+.title {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: $gap;
+  align-items: end;
+  padding: 2.5rem 0 3rem;
+  border-bottom: 1px solid $rule;
+}
+
+.num {
+  grid-column: 1 / 7;
+  font-family: $tt-e;
+  font-size: clamp(9rem, 27vw, 21rem);
+  line-height: 0.78;
+  margin-left: -0.06em;
+  color: $ink;
+}
+
+.tblock {
+  grid-column: 7 / 13;
+  padding-bottom: 0.6rem;
+  display: grid;
+  gap: 1.25rem;
+
+  h1 {
+    font-family: $tt-e;
+    font-weight: 400;
+    font-size: clamp(2.2rem, 4.6vw, 4rem);
+    line-height: 1;
+    text-wrap: balance;
+    .c { color: $ribbon; }
   }
 }
 
-// Doc pages
-.doc-header {
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
+.dek { font-size: 1.15rem; line-height: 1.45; max-width: 36ch; }
 
-  // The header is a typed Savepoint; the # line is the page title
-  .doc-tag {
-    font-family: $tt-e;
-    font-size: 1rem;
-    line-height: 1.6;
+.colophon {
+  font-family: $tt-e;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: $ink-muted;
+  > * { display: block; }
+  .f { padding-left: 2ch; }
+  .t, .k { color: $syntax; }
+}
 
-    > * { display: block; }
-    .t { color: $ink-faint; }
-    .f { padding-left: 2ch; }
-    .k { color: $ink-faint; }
-    .c { color: $ribbon; }
+// Doc body: each h2 sits in the margin column beside its first block;
+// everything else holds to the text column. Code, tables and the specimen run wider.
+.doc-content {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: $gap;
+  counter-reset: sec;
 
-    h1.f {
-      font-size: 1.45rem;
-      font-weight: 400;
-      line-height: 1.35;
-      margin: 0.2rem 0;
-      // the # lines up with the fields above; wrapped titles hang under the text
-      padding-left: calc(1.15rem + 1.2em); // 1.15rem = the 2ch field indent at body size
-      text-indent: -1.2em;
-      .c { color: $ribbon; }
+  > * { grid-column: 4 / 11; min-width: 0; }
+  > pre, > table, > .specimen, > div.highlighter-rouge { grid-column: 4 / 13; }
+
+  > h1, > h2 {
+    grid-column: 1 / 4;
+    @include typed-label;
+    font-size: 0.85rem;
+    padding-top: 3rem;
+    margin-top: 0;
+    border-top: 1px solid $rule;
+    counter-increment: sec;
+    text-wrap: balance;
+
+    &::before {
+      content: "\00A7" counter(sec);
+      display: block;
+      font-family: $tt-e;
+      font-size: 2.2rem;
+      letter-spacing: 0;
+      text-transform: none;
+      color: $ribbon;
+      line-height: 1;
+      margin-bottom: 0.4rem;
     }
   }
 
-  .doc-subtitle {
-    font-size: 0.85rem;
-    color: $ink-muted;
-    margin-top: 0.35rem;
-  }
-}
+  // The block beside each heading carries the same rule, so the section break runs the full width
+  > h1 + *, > h2 + * { border-top: 1px solid $rule; padding-top: 3rem; margin-top: 0; }
+  > h2:first-child, > h2:first-child + * { border-top: 0; }
 
-.doc-content {
-  h1, h2 {
-    @include typed-heading;
-    font-size: 1rem;
-    margin: 2.75rem 0 0.75rem;
-  }
-  h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin: 1.5rem 0 0.5rem;
-  }
+  h3 { font-size: 1rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
 
-  p, ul, ol, blockquote { max-width: $content-max; }
+  p, ul, ol, blockquote { max-width: $measure; }
   p { margin-bottom: 1rem; }
   ul, ol { margin: 0 0 1rem 1.5rem; }
   li { margin-bottom: 0.25rem; }
@@ -244,18 +286,17 @@ a {
 
   pre {
     background: $code-bg;
-    border-left: 2px solid $rule;
-    padding: 1rem 1.25rem;
+    border-left: 2px solid $ribbon;
+    padding: 1.25rem 1.5rem;
     white-space: pre-wrap; // long # lines wrap instead of scrolling sideways
     overflow-wrap: anywhere;
     margin-bottom: 1.25rem;
 
-    // Savepoints and other examples are typed, like the masthead
     code {
       font-family: $tt-e;
       background: none;
       padding: 0;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
   }
 
@@ -276,62 +317,154 @@ a {
 
     th, td {
       text-align: left;
-      padding: 0.45rem 0.6rem;
+      padding: 0.5rem 0.6rem;
       border-bottom: 1px solid $rule;
       vertical-align: top;
     }
 
     th {
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      @include typed-label;
       font-size: 0.78rem;
       border-bottom: 1px solid $ink;
     }
   }
 
-  hr {
-    display: none; // the docs use --- between every section; spacing does that job
+  hr { display: none; } // the docs use --- between every section; the section rules do that job
+}
+
+// The specimen: the canonical tag set large, each field selectable
+.specimen {
+  margin-bottom: 1.5rem;
+
+  .hint { margin-bottom: 1rem; font-size: 0.9rem; color: $ink-muted; }
+
+  .spec {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+  }
+
+  .tag {
+    font-family: $tt-e;
+    font-size: clamp(1.05rem, 1.7vw, 1.4rem);
+    line-height: 1.75;
+    background: $code-bg;
+    padding: 1.6rem 1.8rem;
+    border-left: 2px solid $ribbon;
+
+    .t { color: $syntax; display: block; }
+
+    button {
+      all: unset;
+      display: block;
+      cursor: pointer;
+      padding-left: 2ch;
+      position: relative;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      .k { color: $syntax; text-decoration: underline dotted; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+      .v { color: $ink-muted; }
+      &:hover .k, &:hover .v { color: $ink; }
+      &:focus-visible { outline: 1px dashed $ribbon; }
+
+      &[aria-pressed="true"] {
+        background: $paper;
+        .k, .v { color: $ribbon; }
+        &::before { content: "\2192"; position: absolute; left: 0; color: $ribbon; }
+      }
+    }
+  }
+
+  .note {
+    position: sticky;
+    top: 1.5rem;
+    border-top: 1px solid $ink;
+    padding-top: 0.9rem;
+
+    .req { @include typed-label; font-size: 0.78rem; letter-spacing: 0.12em; color: $ink-muted; }
+    h3 { font-family: $tt-e; font-weight: 400; font-size: 1.9rem; line-height: 1.1; margin: 0.35rem 0 0.8rem; color: $ribbon; overflow-wrap: anywhere; }
+    p { font-size: 1.05rem; line-height: 1.5; }
+    .eg { margin-top: 1rem; font-family: $tt-e; font-size: 0.95rem; color: $ink-muted; overflow-wrap: anywhere; }
   }
 }
 
-.doc-nav-footer {
-  display: flex;
-  justify-content: space-between;
+// Previous and next, at the foot of each document
+.prevnext {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $gap;
   margin-top: 3rem;
-  padding-top: 1.25rem;
-  font-size: 0.85rem;
+  padding: 2rem 0;
+  border-top: 1px solid $rule;
+  border-bottom: 1px solid $ink;
 
-  .doc-next { margin-left: auto; }
+  a[rel="next"] { text-align: right; grid-column: 2; }
 }
 
 .site-footer {
-  margin-top: 3rem;
-  padding-top: 1.25rem;
-  font-size: 0.8rem;
-  color: $ink-faint;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding: 1.5rem 0 3rem;
+  font-size: 0.82rem;
+  color: $ink-muted;
 
-  a { color: $ink-faint; &:hover { color: $ribbon; } }
-  p { margin-bottom: 0.25rem; }
+  a { color: $ink-muted; &:hover { color: $ribbon; } }
 }
 
-@media (max-width: 768px) {
-  .site-wrapper { flex-direction: column; }
+@media (max-width: $narrow) {
+  .head { grid-template-columns: auto auto; justify-content: space-between; }
+  .head .run { display: none; }
 
-  .site-nav {
-    width: 100%;
-    height: auto;
-    position: static;
-    border-right: none;
-    border-bottom: 1px solid $rule;
-    padding: 1.5rem;
+  .index {
+    summary {
+      display: flex;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid $rule;
+      font-family: $tt-base;
+      font-size: 0.95rem;
+      cursor: pointer;
+      list-style: none;
+      &::-webkit-details-marker { display: none; }
+      b { margin-left: auto; margin-right: 1.5ch; font-weight: 400; color: $ribbon; font-family: $tt-e; }
+      &::after { content: "+"; color: $ink-muted; }
+    }
+    details[open] summary::after { content: "\2212"; }
+
+    ol { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 0; }
+    a { grid-template-columns: 3ch 1fr; align-items: baseline; padding: 0.75rem 0; border-top: 0; border-bottom: 1px solid $rule; }
+    [aria-current] { border-top: 0; padding-top: 0.75rem; }
+    .n { font-size: 1.1rem; }
   }
 
-  .nav-docs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 1rem;
+  .title, .doc-content, .home-content { grid-template-columns: minmax(0, 1fr); }
+  .num, .tblock { grid-column: 1 / -1; }
+  .num { font-size: 46vw; }
+  .tblock { padding-top: 1.25rem; }
+
+  .doc-content {
+    > *, > pre, > table, > .specimen, > div.highlighter-rouge { grid-column: 1 / -1; }
+    > h1, > h2 {
+      grid-column: 1 / -1;
+      padding-top: 2.5rem;
+      margin-bottom: 1rem;
+      &::before { display: inline; font-size: 1.4rem; margin-right: 0.6rem; }
+    }
+    > h1 + *, > h2 + * { border-top: 0; padding-top: 0; }
+    table { display: block; overflow-x: auto; }
   }
 
-  .site-content { padding: 1.5rem; }
+  .home-content > * { grid-column: 1 / -1; }
+
+  .specimen {
+    .spec { grid-template-columns: minmax(0, 1fr); }
+    .tag { padding: 1.2rem 1rem; }
+    .note { position: static; }
+  }
+
+  .prevnext { grid-template-columns: minmax(0, 1fr); a[rel="next"] { text-align: left; grid-column: 1; } }
 }
