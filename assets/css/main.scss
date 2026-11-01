@@ -144,21 +144,34 @@ a {
 }
 
 // Homepage: the protocol's declaration tag is the masthead
+// Type as the image: the brackets and the # line at poster scale, the fields
+// small between them, so the tag's own structure becomes the composition.
 .home-header {
-  padding: 3rem 0;
-  border-bottom: 1px solid $rule;
+  padding: 2rem 0 3rem;
+  border-bottom: 1px solid $ink;
 }
 
 .hero-tag {
   font-family: $tt-e;
-  font-size: clamp(1.15rem, 2.9vw, 2.3rem);
-  line-height: 1.45;
+  font-size: clamp(1rem, 1.55vw, 1.3rem);
+  line-height: 1.6;
   color: $ink;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 
-  .t, .k { color: $syntax; }
-  .c { color: $ribbon; }
+  .k { color: $syntax; }
+  .t {
+    color: $ink;
+    font-size: clamp(3.4rem, 12.5vw, 10rem);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+  }
+  .t:first-child { margin-left: -0.05em; }
+  .c {
+    color: $ribbon;
+    font-size: clamp(1.7rem, 4.6vw, 3.9rem);
+    line-height: 1.05;
+  }
 }
 
 .home-content {
@@ -167,9 +180,17 @@ a {
   column-gap: $gap;
   padding: 3rem 0;
 
-  > * { grid-column: 4 / 11; }
+  > * { grid-column: 6 / 12; }
   p { max-width: $measure; margin-bottom: 1rem; }
-  > p:first-child { font-size: 1.35rem; line-height: 1.45; max-width: 40ch; }
+  > p:first-child {
+    grid-column: 1 / 10;
+    font-family: $tt-e;
+    font-size: clamp(1.5rem, 3vw, 2.45rem);
+    line-height: 1.2;
+    max-width: 30ch;
+    margin-bottom: 2.5rem;
+    text-wrap: balance;
+  }
 }
 
 .start, .prevnext a {
@@ -186,27 +207,35 @@ a {
 .start { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid $ink; }
 
 // Doc pages: title block with the document number as the image
+// The number is set so large that the contents rule crops its top; the title
+// block is laid over its right side on a paper panel, so the two overlap.
 .title {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: $gap;
   align-items: end;
-  padding: 2.5rem 0 3rem;
-  border-bottom: 1px solid $rule;
+  padding: 0 0 3rem;
+  border-bottom: 1px solid $ink;
+  overflow: hidden;
 }
 
 .num {
-  grid-column: 1 / 7;
+  grid-column: 1 / 10;
+  grid-row: 1;
   font-family: $tt-e;
-  font-size: clamp(9rem, 27vw, 21rem);
-  line-height: 0.78;
-  margin-left: -0.06em;
+  font-size: clamp(11rem, 46vw, 40rem);
+  line-height: 0.74;
+  margin: -0.11em 0 0 -0.07em;
+  letter-spacing: -0.04em;
   color: $ink;
 }
 
 .tblock {
-  grid-column: 7 / 13;
-  padding-bottom: 0.6rem;
+  grid-column: 6 / 13;
+  grid-row: 1;
+  position: relative;
+  background: $paper;
+  padding: 1.5rem 0 0.4rem 1.5rem;
   display: grid;
   gap: 1.25rem;
 
@@ -247,27 +276,33 @@ a {
     grid-column: 1 / 4;
     @include typed-label;
     font-size: 0.85rem;
-    padding-top: 3rem;
-    margin-top: 0;
-    border-top: 1px solid $rule;
+    padding-top: 4.5rem;
+    margin-top: 2rem;
+    border-top: 1px solid $ink;
     counter-increment: sec;
     text-wrap: balance;
 
+    position: relative;
+
+    // The section mark hangs on the rule, which runs into it
     &::before {
       content: "\00A7" counter(sec);
-      display: block;
+      position: absolute;
+      top: -0.5em;
+      left: 0;
+      padding-right: 0.15em;
+      background: $paper;
       font-family: $tt-e;
-      font-size: 2.2rem;
-      letter-spacing: 0;
+      font-size: clamp(3rem, 5vw, 4.6rem);
+      letter-spacing: -0.03em;
       text-transform: none;
       color: $ribbon;
       line-height: 1;
-      margin-bottom: 0.4rem;
     }
   }
 
   // The block beside each heading carries the same rule, so the section break runs the full width
-  > h1 + *, > h2 + * { border-top: 1px solid $rule; padding-top: 3rem; margin-top: 0; }
+  > h1 + *, > h2 + * { border-top: 1px solid $ink; padding-top: 4.5rem; margin-top: 2rem; }
   > h2:first-child, > h2:first-child + * { border-top: 0; }
 
   h3 { font-size: 1rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
@@ -443,18 +478,21 @@ a {
 
   .title, .doc-content, .home-content { grid-template-columns: minmax(0, 1fr); }
   .num, .tblock { grid-column: 1 / -1; }
-  .num { font-size: 46vw; }
-  .tblock { padding-top: 1.25rem; }
+  .num { grid-row: 1; font-size: 58vw; }
+  .tblock { grid-row: 2; margin-top: -2.2rem; padding: 1rem 0 0; }
+  .hero-tag .t { font-size: 17vw; }
+  .hero-tag .c { font-size: 7.4vw; }
+  .home-content > p:first-child { grid-column: 1 / -1; }
 
   .doc-content {
     > *, > pre, > table, > .specimen, > div.highlighter-rouge { grid-column: 1 / -1; }
     > h1, > h2 {
       grid-column: 1 / -1;
-      padding-top: 2.5rem;
+      padding-top: 3rem;
       margin-bottom: 1rem;
-      &::before { display: inline; font-size: 1.4rem; margin-right: 0.6rem; }
+      &::before { font-size: 2.6rem; }
     }
-    > h1 + *, > h2 + * { border-top: 0; padding-top: 0; }
+    > h1 + *, > h2 + * { border-top: 0; padding-top: 0; margin-top: 0; }
     table { display: block; overflow-x: auto; }
   }
 
