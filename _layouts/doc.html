@@ -17,8 +17,23 @@ layout: default
       </div>
     </div>
   </header>
-  <div class="doc-content">
-    {{ content }}
+  {% assign sections = content | split: '<h2 id="' %}
+  <div class="doc-body">
+    <div class="doc-content">
+      {{ content }}
+    </div>
+    {% if sections.size > 2 %}
+    <nav class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+        {% for part in sections offset:1 %}
+          {% assign sid = part | split: '"' | first %}
+          {% assign stitle = part | split: '</h2>' | first | remove_first: sid | remove_first: '">' | strip_html %}
+          <li><a href="#{{ sid }}"><span class="n">&sect;{{ forloop.index }}</span>{{ stitle }}</a></li>
+        {% endfor %}
+      </ol>
+    </nav>
+    {% endif %}
   </div>
   <nav class="prevnext" aria-label="Previous and next">
     {% assign ordered_docs = site.docs | sort: "order" %}
@@ -40,3 +55,20 @@ layout: default
     {% endfor %}
   </nav>
 </article>
+<script>
+  // Mark the section being read in the margin contents.
+  (function () {
+    var links = document.querySelectorAll('.toc a');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var byId = {};
+    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.removeAttribute('aria-current'); });
+        byId[e.target.id].setAttribute('aria-current', 'true');
+      });
+    }, { rootMargin: '0px 0px -70% 0px' });
+    document.querySelectorAll('.doc-content > h2[id]').forEach(function (h) { if (byId[h.id]) obs.observe(h); });
+  })();
+</script>

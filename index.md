@@ -14,6 +14,7 @@ description: "A protocol for marking where reasoning forks, before the context c
   <span class="k">context:</span>Mark it while it is fresh.
   <span class="c"># Version control for thought.</span>
 <span class="t">/&gt;</span></pre>
+  <a class="start" href="{{ '/docs/philosophy/' | relative_url }}"><small>Start reading &rarr;</small><b>01 Why it exists</b></a>
 </div>
 
 <div class="home-content">
@@ -23,7 +24,5 @@ description: "A protocol for marking where reasoning forks, before the context c
 <p>Savepoint marks the moment a line of thinking forks, while you still remember why. It is one self-closing tag: atomic, parseable, and writable by hand.</p>
 
 <p>Open source, version 3.2. It works on paper, in plain text, or from a command line.</p>
-
-<a class="start" href="{{ '/docs/philosophy/' | relative_url }}"><small>Start reading &rarr;</small><b>01 Why it exists</b></a>
 
 </div>

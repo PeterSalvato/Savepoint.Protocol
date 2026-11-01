@@ -1,43 +1,51 @@
-<!-- The canonical tag set large. Each field is a button; its definition (from the field table) shows beside it.
-     Without script, the tag still reads as the canonical format and the table below carries the definitions. -->
+<!-- The canonical tag set large. Each field is a button that marks its row in the field table that follows,
+     so the definitions live in one place. Without script, the tag reads as the canonical format. -->
 <div class="specimen">
-  <p class="hint">Select any field in the tag to read what it means.</p>
+  <p class="hint">Select a field to find it in the field specification.</p>
   <div class="spec">
     <div class="tag" id="specimen-tag">
       <span class="t">&lt;Savepoint</span>
-      <button type="button" aria-pressed="false" data-req="Required" data-desc="The version of the syntax used (always declared)." data-eg="protocol_version:3.2"><span class="k">protocol_version:</span><span class="v">3.2</span></button>
-      <button type="button" aria-pressed="false" data-req="Required" data-desc="Domain of reflection." data-eg="category:design_note"><span class="k">category:</span><span class="v">[domain_context]</span></button>
-      <button type="button" aria-pressed="false" data-req="Required" data-desc="Purpose of the Savepoint." data-eg="function:revision"><span class="k">function:</span><span class="v">[role or purpose]</span></button>
-      <button type="button" aria-pressed="false" data-req="Required" data-desc="ISO 8601 UTC timestamp." data-eg="timestamp:2025-04-08T15:32:00Z"><span class="k">timestamp:</span><span class="v">[ISO 8601 format]</span></button>
-      <button type="button" aria-pressed="false" data-req="Optional" data-desc="Project scope for filtering." data-eg="project:homelab"><span class="k">project:</span><span class="v">[project scope]</span></button>
-      <button type="button" aria-pressed="false" data-req="Optional" data-desc="Comma-separated search terms for traversal." data-eg="keywords:context field, traversal"><span class="k">keywords:</span><span class="v">[comma-separated terms]</span></button>
-      <button type="button" aria-pressed="true" data-req="Optional" data-desc="One sentence: what was decided, realized, or shifted. The reconstruction payload. Without it, meaning requires reading surrounding conversation." data-eg="context:A savepoint has to make sense without the chat that produced it."><span class="k">context:</span><span class="v">[reconstruction payload]</span></button>
-      <button type="button" aria-pressed="false" data-req="Optional" data-desc="Priority or urgency." data-eg="importance:high"><span class="k">importance:</span><span class="v">[optional]</span></button>
-      <button type="button" aria-pressed="false" data-req="Optional" data-desc="Self-assessed confidence in this Savepoint’s accuracy." data-eg="confidence:medium"><span class="k">confidence:</span><span class="v">[optional]</span></button>
-      <button type="button" aria-pressed="false" data-req="Optional" data-desc="Attribution to people, sources, or other Savepoints." data-eg="influence:Order of the Ætherwright"><span class="k">influence:</span><span class="v">[optional]</span></button>
-      <button type="button" aria-pressed="false" data-name="# line" data-req="Required" data-desc="The actual semantic content, prefixed by a # character." data-eg="# Add an optional context field so every savepoint can be read on its own."><span class="k"># </span><span class="v">[semantic content of the Savepoint]</span></button>
+      <button type="button" aria-pressed="false"><span class="k">protocol_version:</span><span class="v">3.2</span></button>
+      <button type="button" aria-pressed="false"><span class="k">category:</span><span class="v">[domain_context]</span></button>
+      <button type="button" aria-pressed="false"><span class="k">function:</span><span class="v">[role or purpose]</span></button>
+      <button type="button" aria-pressed="false"><span class="k">timestamp:</span><span class="v">[ISO 8601 format]</span></button>
+      <button type="button" aria-pressed="false"><span class="k">project:</span><span class="v">[project scope]</span></button>
+      <button type="button" aria-pressed="false"><span class="k">keywords:</span><span class="v">[comma-separated terms]</span></button>
+      <button type="button" aria-pressed="false"><span class="k">context:</span><span class="v">[reconstruction payload]</span></button>
+      <button type="button" aria-pressed="false"><span class="k">importance:</span><span class="v">[optional]</span></button>
+      <button type="button" aria-pressed="false"><span class="k">confidence:</span><span class="v">[optional]</span></button>
+      <button type="button" aria-pressed="false"><span class="k">influence:</span><span class="v">[optional]</span></button>
+      <button type="button" aria-pressed="false" data-name="# line"><span class="k"># </span><span class="v">[semantic content of the Savepoint]</span></button>
       <span class="t">/&gt;</span>
     </div>
-    <div class="note" aria-live="polite">
-      <div class="req" id="specimen-req">Optional</div>
-      <h3 id="specimen-name">context</h3>
-      <p id="specimen-desc">One sentence: what was decided, realized, or shifted. The reconstruction payload. Without it, meaning requires reading surrounding conversation.</p>
-      <div class="eg" id="specimen-eg">context:A savepoint has to make sense without the chat that produced it.</div>
-    </div>
-  </div>
+</div>
 </div>
 <script>
   (function () {
     var tag = document.getElementById('specimen-tag');
     var buttons = tag.querySelectorAll('button');
+    var table = tag.closest('.specimen').parentNode.querySelector('table');
+    if (!table) return;
+    var rows = {};
+    table.querySelectorAll('tbody tr').forEach(function (tr) {
+      rows[tr.cells[0].textContent.replace(/\s+line$/, '').trim()] = tr;
+    });
+    function nameOf(b) { return b.querySelector('.k').textContent.replace(':', '').trim(); }
+    function mark(b) {
+      buttons.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      Object.keys(rows).forEach(function (k) { rows[k].classList.toggle('on', b && k === nameOf(b)); });
+    }
     buttons.forEach(function (b) {
       b.addEventListener('click', function () {
-        buttons.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-        document.getElementById('specimen-req').textContent = b.dataset.req;
-        document.getElementById('specimen-name').textContent = b.dataset.name || b.querySelector('.k').textContent.replace(':', '');
-        document.getElementById('specimen-desc').textContent = b.dataset.desc;
-        document.getElementById('specimen-eg').textContent = b.dataset.eg;
+        mark(b);
+        var row = rows[nameOf(b)];
+        if (row && row.getBoundingClientRect().bottom > window.innerHeight) row.scrollIntoView({ block: 'center', behavior: 'smooth' });
       });
+    });
+    Object.keys(rows).forEach(function (k) {
+      var b = Array.prototype.find.call(buttons, function (x) { return nameOf(x) === k; });
+      if (!b) return;
+      rows[k].addEventListener('mouseenter', function () { mark(b); });
     });
   })();
 </script>

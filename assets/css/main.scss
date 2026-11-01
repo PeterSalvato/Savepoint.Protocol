@@ -147,8 +147,13 @@ a {
 // Type as the image: the brackets and the # line at poster scale, the fields
 // small between them, so the tag's own structure becomes the composition.
 .home-header {
+  display: grid;
   padding: 2rem 0 3rem;
   border-bottom: 1px solid $ink;
+
+  // The way in sits on the closing bracket's line
+  > * { grid-area: 1 / 1; }
+  .start { align-self: end; justify-self: end; width: min(100%, 22rem); margin-bottom: 0.6rem; }
 }
 
 .hero-tag {
@@ -180,16 +185,20 @@ a {
   column-gap: $gap;
   padding: 3rem 0;
 
-  > * { grid-column: 6 / 12; }
+  align-items: start;
+
+  // The lede large on the left; the plain facts beside it, under a rule
+  > * { grid-column: 9 / 13; }
   p { max-width: $measure; margin-bottom: 1rem; }
+  > p:nth-child(2) { border-top: 1px solid $ink; padding-top: 1rem; }
   > p:first-child {
-    grid-column: 1 / 10;
+    grid-column: 1 / 8;
+    grid-row: 1 / span 3;
     font-family: $tt-e;
-    font-size: clamp(1.5rem, 3vw, 2.45rem);
-    line-height: 1.2;
-    max-width: 30ch;
-    margin-bottom: 2.5rem;
-    text-wrap: balance;
+    font-size: clamp(1.5rem, 2.7vw, 2.2rem);
+    line-height: 1.22;
+    margin-bottom: 0;
+    text-wrap: pretty;
   }
 }
 
@@ -261,16 +270,25 @@ a {
   .t, .k { color: $syntax; }
 }
 
-// Doc body: each h2 sits in the margin column beside its first block;
-// everything else holds to the text column. Code, tables and the specimen run wider.
-.doc-content {
+// Doc body: section heads in the left margin, text in the middle, and the
+// page's own contents in the right margin, held in view while reading.
+.doc-body {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: $gap;
-  counter-reset: sec;
+}
 
-  > * { grid-column: 4 / 11; min-width: 0; }
-  > pre, > table, > .specimen, > div.highlighter-rouge { grid-column: 4 / 13; }
+.doc-content {
+  grid-column: 1 / 11;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  grid-template-columns: subgrid;
+  column-gap: $gap;
+  counter-reset: sec;
+  overflow-x: clip; // trims the section rules at the text column's edge
+  font-size: 1.0625rem;
+
+  > * { grid-column: 4 / -1; min-width: 0; }
 
   > h1, > h2 {
     grid-column: 1 / 4;
@@ -284,6 +302,16 @@ a {
 
     position: relative;
 
+    // One rule across the whole section, margin and text column together
+    &::after {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 0;
+      width: 400%;
+      border-top: 1px solid $ink;
+    }
+
     // The section mark hangs on the rule, which runs into it
     &::before {
       content: "\00A7" counter(sec);
@@ -292,6 +320,7 @@ a {
       left: 0;
       padding-right: 0.15em;
       background: $paper;
+      z-index: 1;
       font-family: $tt-e;
       font-size: clamp(3rem, 5vw, 4.6rem);
       letter-spacing: -0.03em;
@@ -302,8 +331,8 @@ a {
   }
 
   // The block beside each heading carries the same rule, so the section break runs the full width
-  > h1 + *, > h2 + * { border-top: 1px solid $ink; padding-top: 4.5rem; margin-top: 2rem; }
-  > h2:first-child, > h2:first-child + * { border-top: 0; }
+  > h1 + *, > h2 + * { padding-top: 4.5rem; margin-top: 2rem; }
+  > h2:first-child { border-top: 0; &::after { display: none; } }
 
   h3 { font-size: 1rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
 
@@ -357,6 +386,8 @@ a {
       vertical-align: top;
     }
 
+    tr.on td { background: $code-bg; color: $ribbon; code { background: $paper; color: $ribbon; } }
+
     th {
       @include typed-label;
       font-size: 0.78rem;
@@ -367,18 +398,37 @@ a {
   hr { display: none; } // the docs use --- between every section; the section rules do that job
 }
 
+// The page's own contents, in the right margin
+.toc {
+  grid-column: 11 / 13;
+  align-self: start;
+  position: sticky;
+  top: 1.5rem;
+  margin-top: 2.5rem;
+  font-size: 0.82rem;
+  line-height: 1.35;
+
+  p { @include typed-label; font-size: 0.74rem; color: $ink-muted; padding-bottom: 0.6rem; border-bottom: 1px solid $ink; }
+  ol { list-style: none; }
+  a {
+    display: grid;
+    grid-template-columns: 2.6ch 1fr;
+    gap: 0.4ch;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid $rule;
+    color: $ink-muted;
+    text-decoration: none;
+    &:hover { color: $ink; }
+  }
+  .n { font-family: $tt-e; color: $syntax; }
+  [aria-current] { color: $ribbon; .n { color: $ribbon; } }
+}
+
 // The specimen: the canonical tag set large, each field selectable
 .specimen {
   margin-bottom: 1.5rem;
 
   .hint { margin-bottom: 1rem; font-size: 0.9rem; color: $ink-muted; }
-
-  .spec {
-    display: grid;
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-    gap: 32px;
-    align-items: start;
-  }
 
   .tag {
     font-family: $tt-e;
@@ -411,18 +461,6 @@ a {
         &::before { content: "\2192"; position: absolute; left: 0; color: $ribbon; }
       }
     }
-  }
-
-  .note {
-    position: sticky;
-    top: 1.5rem;
-    border-top: 1px solid $ink;
-    padding-top: 0.9rem;
-
-    .req { @include typed-label; font-size: 0.78rem; letter-spacing: 0.12em; color: $ink-muted; }
-    h3 { font-family: $tt-e; font-weight: 400; font-size: 1.9rem; line-height: 1.1; margin: 0.35rem 0 0.8rem; color: $ribbon; overflow-wrap: anywhere; }
-    p { font-size: 1.05rem; line-height: 1.5; }
-    .eg { margin-top: 1rem; font-family: $tt-e; font-size: 0.95rem; color: $ink-muted; overflow-wrap: anywhere; }
   }
 }
 
@@ -465,7 +503,8 @@ a {
       cursor: pointer;
       list-style: none;
       &::-webkit-details-marker { display: none; }
-      b { margin-left: auto; margin-right: 1.5ch; font-weight: 400; color: $ribbon; font-family: $tt-e; }
+      span { margin-right: auto; }
+      b { margin-right: 1.5ch; font-weight: 400; color: $ribbon; font-family: $tt-e; }
       &::after { content: "+"; color: $ink-muted; }
     }
     details[open] summary::after { content: "\2212"; }
@@ -476,32 +515,33 @@ a {
     .n { font-size: 1.1rem; }
   }
 
-  .title, .doc-content, .home-content { grid-template-columns: minmax(0, 1fr); }
+  .title, .doc-body, .doc-content, .home-content { grid-template-columns: minmax(0, 1fr); }
+  .doc-content { grid-column: 1 / -1; font-size: 1rem; }
+  .toc { display: none; }
   .num, .tblock { grid-column: 1 / -1; }
-  .num { grid-row: 1; font-size: 58vw; }
+  .num { grid-row: 1; font-size: 58vw; margin-top: -0.03em; }
   .tblock { grid-row: 2; margin-top: -2.2rem; padding: 1rem 0 0; }
   .hero-tag .t { font-size: 17vw; }
-  .hero-tag .c { font-size: 7.4vw; }
-  .home-content > p:first-child { grid-column: 1 / -1; }
+  .hero-tag .c { font-size: 7.4vw; display: inline-block; padding-left: 1.2em; text-indent: -1.2em; vertical-align: top; }
+  .home-content > p:first-child { grid-column: 1 / -1; grid-row: auto; margin-bottom: 2rem; }
+  .home-header { > * { grid-area: auto; } .start { justify-self: stretch; width: auto; margin: 2rem 0 0; } }
 
   .doc-content {
-    > *, > pre, > table, > .specimen, > div.highlighter-rouge { grid-column: 1 / -1; }
+    > * { grid-column: 1 / -1; }
     > h1, > h2 {
       grid-column: 1 / -1;
       padding-top: 3rem;
       margin-bottom: 1rem;
       &::before { font-size: 2.6rem; }
     }
-    > h1 + *, > h2 + * { border-top: 0; padding-top: 0; margin-top: 0; }
+    > h1 + *, > h2 + * { padding-top: 0; margin-top: 0; }
     table { display: block; overflow-x: auto; }
   }
 
   .home-content > * { grid-column: 1 / -1; }
 
   .specimen {
-    .spec { grid-template-columns: minmax(0, 1fr); }
     .tag { padding: 1.2rem 1rem; }
-    .note { position: static; }
   }
 
   .prevnext { grid-template-columns: minmax(0, 1fr); a[rel="next"] { text-align: left; grid-column: 1; } }
