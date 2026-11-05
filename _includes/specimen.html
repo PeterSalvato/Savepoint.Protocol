@@ -21,7 +21,8 @@
 </div>
 </div>
 <script>
-  (function () {
+  // Runs once the page is parsed: the field table comes after this script in the document.
+  document.addEventListener('DOMContentLoaded', function () {
     var tag = document.getElementById('specimen-tag');
     var buttons = tag.querySelectorAll('button');
     var table = tag.closest('.specimen').parentNode.querySelector('table');
@@ -47,5 +48,5 @@
       if (!b) return;
       rows[k].addEventListener('mouseenter', function () { mark(b); });
     });
-  })();
+  });
 </script>

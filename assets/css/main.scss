@@ -525,3 +525,75 @@ a {
 
   .prevnext { grid-template-columns: minmax(0, 1fr); a[rel="next"] { text-align: left; grid-column: 1; } }
 }
+
+// Motion. A typed document moves like a typewriter: crisp, short, in steps,
+// never floating. Lines are struck in from the left, rules are drawn like a
+// ruled line, and hovers answer at key-press speed. Nothing loops, nothing
+// plays on scroll back up, and none of it runs under reduced motion.
+$strike: cubic-bezier(.2, .7, .2, 1);   // a key landing: fast in, settled
+$quick: .15s;
+$mid: .3s;
+
+@media (prefers-reduced-motion: no-preference) {
+  :root { interpolate-size: allow-keywords; }
+
+  // Home: the declaration tag is typed in, one line at a time, carriage left to right.
+  // Steps instead of a smooth wipe, so the letters arrive in strokes like keys.
+  .hero-tag {
+    > .t:first-child { animation: strike .18s $strike both; }
+    .ln {
+      display: inline-block;
+      max-width: 100%;
+      animation: type .42s steps(14, end) both;
+      animation-delay: calc(.22s + var(--i) * .11s);
+    }
+    > .t:last-child { display: inline-block; animation: strike .18s $strike both; animation-delay: .98s; }
+  }
+  .home-header .intro { animation: settle .5s $strike 1.05s both; }
+
+  // Doc pages: the number strikes the page like a heavy key; the title block settles after it
+  .num { animation: strike .22s $strike both; }
+  .tblock { animation: settle .45s $strike .12s both; }
+
+  // Section rules are drawn across as the section comes up, then the mark lands on them
+  @supports (animation-timeline: view()) {
+    .doc-content > h2 {
+      &::after { transform-origin: left; animation: rule linear both; animation-timeline: view(); animation-range: entry 10% entry 80%; }
+      &::before { animation: mark linear both; animation-timeline: view(); animation-range: entry 40% entry 90%; }
+    }
+  }
+
+  // Hovers and states, at key-press speed
+  a { transition: color $quick $strike, text-decoration-color $quick $strike, text-underline-offset $quick $strike; }
+  a:hover { text-underline-offset: 4px; }
+  .mark, .gh, .toc a, .site-footer a { transition: color $quick $strike; }
+  .index a { transition: color $quick $strike, border-top-color $quick $strike; }
+  .start b, .prevnext b { display: inline-block; transition: color $quick $strike, translate $mid $strike; }
+  .start:hover b, .prevnext a[rel="next"]:hover b { translate: 4px 0; }
+  .prevnext a[rel="prev"]:hover b { translate: -4px 0; }
+
+  // The specimen: the pressed field and its row in the table fill in like a highlighter pass
+  .specimen .tag button {
+    transition: background-color $mid $strike;
+    .k, .v { transition: color $quick $strike; }
+    &::before { content: "\2192"; position: absolute; left: 0; color: $ribbon; opacity: 0; translate: -6px 0; transition: opacity $quick $strike, translate $mid $strike; }
+    &[aria-pressed="true"]::before { opacity: 1; translate: 0 0; }
+  }
+  .doc-content table td { transition: background-color $mid $strike, color $quick $strike; }
+
+  // Phones: the folded contents open and close instead of jumping
+  .index details::details-content { block-size: 0; overflow: clip; transition: block-size $mid $strike, content-visibility $mid allow-discrete; }
+  .index details[open]::details-content { block-size: auto; }
+
+  // Page to page: the running head and contents hold still; the page beneath is swapped quickly
+  @view-transition { navigation: auto; }
+  .head { view-transition-name: head; }
+  .index { view-transition-name: contents; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .2s; animation-timing-function: $strike; }
+}
+
+@keyframes type { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes strike { from { opacity: 0; scale: 1.04; } to { opacity: 1; scale: 1; } }
+@keyframes settle { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
+@keyframes rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes mark { from { opacity: 0; translate: 0 -6px; } to { opacity: 1; translate: 0 0; } }

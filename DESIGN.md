@@ -84,6 +84,17 @@ Ink rule top and bottom, hairline `rule` between rows, capitalized header labels
 ### Links
 Purple, underlined 1px with a 2px offset. Hover darkens to `ribbon-dark`.
 
+## Motion
+
+Added 5 November 2026. The site moves like a typewriter: crisp, short and in steps, never floating. Everything is in the Motion block at the end of `main.scss` and switches off under reduced motion.
+
+- **Home:** the declaration tag is typed in line by line, each line revealed left to right in steps like keys landing. The brackets strike in first and last; the intro settles after.
+- **Doc pages:** the poster number strikes in; the title block settles after it. Section rules draw across as each section scrolls into view, and the section mark lands on its rule.
+- **Hovers:** colour changes at key-press speed (.15s); link underlines drop to a 4px offset; previous, next and start links nudge 4px toward where they go.
+- **Specimen:** the pressed field's arrow slides in and its table row fills in.
+- **Phones:** the folded contents open and close smoothly.
+- **Page to page:** the running head and contents hold still while the page beneath is swapped in .2s.
+
 ## Layout
 
 A 12-column grid in a frame of about 1180px, with a margin column for section marks. Running text holds to 62–66ch. Below 860px everything goes to one column. The `---` rules in the markdown are hidden, and spacing separates sections.
