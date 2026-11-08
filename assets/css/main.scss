@@ -37,6 +37,24 @@ $narrow: 860px;
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+// Phones: no grey flash on tap, no font inflation in landscape
+html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; }
+
+// Hover only where there is a mouse, so a tap doesn't leave it stuck on.
+// The same look answers a press, for touch.
+@mixin hover-press {
+  @media (hover: hover) and (pointer: fine) { &:hover { @content; } }
+  &:active { @content; }
+}
+
+// Controls: no double-tap wait, and a long press doesn't select the label
+a, button, [role="button"], summary { touch-action: manipulation; }
+@mixin control {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
 body {
   font-family: $font;
   background: $paper;
@@ -51,7 +69,7 @@ a {
   text-decoration: underline;
   text-underline-offset: 2px;
   text-decoration-thickness: 1px;
-  &:hover { color: $ribbon-dark; }
+  @include hover-press { color: $ribbon-dark; }
 }
 
 :focus-visible { outline: 1px dashed $ribbon; outline-offset: 3px; }
@@ -74,13 +92,14 @@ a {
   grid-template-columns: auto 1fr auto;
   align-items: baseline;
   gap: 1.5rem;
-  padding: 1.25rem 0 0.9rem;
+  padding: #{"max(1.25rem, env(safe-area-inset-top, 0px))"} 0 0.9rem;
   border-bottom: 1px solid $ink;
   font-family: $tt-base;
   font-size: 0.82rem;
   letter-spacing: 0.08em;
 
   .run { color: $ink-muted; text-transform: uppercase; }
+  a { @include control; }
 }
 
 .mark {
@@ -92,19 +111,19 @@ a {
   color: $ink;
   text-decoration: none;
   .t { color: $syntax; }
-  &:hover { color: $ribbon; }
+  @include hover-press { color: $ribbon; }
 }
 
 .gh {
   color: $ink;
   text-decoration: none;
   text-transform: uppercase;
-  &:hover { color: $ribbon; }
+  @include hover-press { color: $ribbon; }
 }
 
 // Contents across the top: every document visible from every page
 .index {
-  summary { display: none; }
+  summary { display: none; @include control; }
 
   ol {
     list-style: none;
@@ -122,7 +141,8 @@ a {
     border-top: 2px solid $rule;
     color: $ink-muted;
     text-decoration: none;
-    &:hover { border-top-color: $ink; color: $ink; }
+    @include control;
+    @include hover-press { border-top-color: $ink; color: $ink; }
   }
 
   .n { font-family: $tt-e; font-size: 1.5rem; line-height: 1; color: $ink; }
@@ -193,10 +213,11 @@ a {
   gap: 0.2rem;
   color: $ink;
   text-decoration: none;
+  @include control;
 
   small { @include typed-label; font-size: 0.78rem; letter-spacing: 0.12em; color: $ink-muted; }
   b { font-family: $tt-e; font-weight: 400; font-size: clamp(1.3rem, 2.4vw, 1.9rem); }
-  &:hover b { color: $ribbon; }
+  @include hover-press { b { color: $ribbon; } }
 }
 
 .start { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid $ink; }
@@ -398,7 +419,8 @@ a {
     border-bottom: 1px solid $rule;
     color: $ink-muted;
     text-decoration: none;
-    &:hover { color: $ink; }
+    @include control;
+    @include hover-press { color: $ink; }
   }
   .n { font-family: $tt-e; color: $syntax; }
   [aria-current] { color: $ribbon; .n { color: $ribbon; } }
@@ -432,7 +454,7 @@ a {
 
       .k { color: $syntax; text-decoration: underline dotted; text-underline-offset: 4px; text-decoration-thickness: 1px; }
       .v { color: $ink-muted; }
-      &:hover .k, &:hover .v { color: $ink; }
+      @include hover-press { .k, .v { color: $ink; } }
       &:focus-visible { outline: 1px dashed $ribbon; }
 
       &[aria-pressed="true"] {
@@ -461,12 +483,13 @@ a {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
-  padding: 1.5rem 0 3rem;
+  // The last thing on the page: clear the home indicator
+  padding: 1.5rem 0 #{"max(3rem, calc(1rem + env(safe-area-inset-bottom, 0px)))"};
   border-top: 1px solid $ink;
   font-size: 0.82rem;
   color: $ink-muted;
 
-  a { color: $ink-muted; &:hover { color: $ribbon; } }
+  a { color: $ink-muted; @include hover-press { color: $ribbon; } }
 }
 
 @media (max-width: $narrow) {
@@ -515,7 +538,7 @@ a {
       &::before { font-size: 1.7rem; }
     }
     > h1 + *, > h2 + * { padding-top: 0; margin-top: 0; }
-    table { display: block; overflow-x: auto; }
+    table { display: block; overflow-x: auto; overscroll-behavior-x: contain; } // a swipe at the table's end doesn't go back a page
   }
 
 
@@ -565,12 +588,14 @@ $mid: .3s;
 
   // Hovers and states, at key-press speed
   a { transition: color $quick $strike, text-decoration-color $quick $strike, text-underline-offset $quick $strike; }
-  a:hover { text-underline-offset: 4px; }
+  @media (hover: hover) and (pointer: fine) {
+    a:hover { text-underline-offset: 4px; }
+    .start:hover b, .prevnext a[rel="next"]:hover b { translate: 4px 0; }
+    .prevnext a[rel="prev"]:hover b { translate: -4px 0; }
+  }
   .mark, .gh, .toc a, .site-footer a { transition: color $quick $strike; }
   .index a { transition: color $quick $strike, border-top-color $quick $strike; }
   .start b, .prevnext b { display: inline-block; transition: color $quick $strike, translate $mid $strike; }
-  .start:hover b, .prevnext a[rel="next"]:hover b { translate: 4px 0; }
-  .prevnext a[rel="prev"]:hover b { translate: -4px 0; }
 
   // The specimen: the pressed field and its row in the table fill in like a highlighter pass
   .specimen .tag button {
