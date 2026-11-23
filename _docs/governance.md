@@ -74,7 +74,7 @@ Teams may keep shared Savepoint folders per person or project, agree on which ki
 - Claim authorship of the protocol or its terms
 - Reuse its protected terms outside the protocol: `.savepoints/` as a namespace, SavepointProtocol, Recursive Drift, Reflective Timestamping, Savepoint Prompts, Cognitive Checkpoint, Protocol Manifest, Savepoint Syntax, Drift Detected, Syntax Proposal, and Signal Beacon
 
-The protocol is open source. The full license is in the [repository](https://github.com/PeterSalvato/Savepoint.Protocol/blob/main/LICENSE).
+The full license is in the [repository](https://github.com/PeterSalvato/Savepoint.Protocol/blob/main/LICENSE.md).
 
 ---
 

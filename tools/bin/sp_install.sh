@@ -1,6 +1,6 @@
 # Savepoint Protocol CLI
 # Author: Peter Salvato
-# License: MIT
+# License: See LICENSE.md
 # (c) 2025 Peter Salvato. All rights reserved.
 
 #!/bin/bash
